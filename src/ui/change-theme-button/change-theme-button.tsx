@@ -2,12 +2,11 @@
 import React from 'react';
 import { useTheme } from 'next-themes';
 import styles from './styles.module.scss';
-import { useEffect, useState } from 'react';
 
-export default function Theme() {
+export function ChangeThemeButton() {
   const { resolvedTheme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => setMounted(true), []);
 
   return (
     <div>
