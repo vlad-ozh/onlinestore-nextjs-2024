@@ -2,13 +2,23 @@
 
 html[class='dark'] {
   --background: #000;
-  --foreground: #fff;
-  --block: #333;
+  --text-color: #e8e8e8;
+
+  --box-background: #232323;
 }
 html[class='light'] {
   --background: #fff;
-  --foreground: #000;
-  --block: #000;
+  --text-color: #000;
+
+  --box-background: #fff;
 }
 
 // Other variables
+
+:root {
+  --accent-color: #e00027;
+
+  --dark-box-background: #222;
+
+  --light-text-color: #e8e8e8;
+}

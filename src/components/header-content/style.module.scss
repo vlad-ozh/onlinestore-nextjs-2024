@@ -1,0 +1,283 @@
+@use './../../assets/common/container';
+@use './../../assets/common/fonts';
+
+.header {
+  font-family: fonts.$roboto;
+  background-color: rgba(48, 48, 48, 0.6);
+}
+
+.navigation {
+  backdrop-filter: blur(16px);
+  @extend %container;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  z-index: 40;
+}
+
+.navBurgerButton {
+  display: none;
+  background-color: transparent;
+  border: none;
+  min-width: 40px;
+  fill: #fff;
+  margin-right: 15px;
+  padding: 5px;
+
+  &:hover {
+    border-radius: 6px;
+    background-color: #565656;
+  }
+  
+  @media screen and (max-width: 800px) {
+    display: block;
+  }
+}
+
+.navigationMobileDisabled {
+  display: none;
+
+  @media screen and (max-width: 800px) {
+    display: block;
+    position: fixed;
+    background-color: var(--background-color);
+    left: -82vw;
+    top: 0;
+    bottom: 0px;
+    max-width: 80vw;
+    width: 100%;
+    z-index: 50;
+    box-shadow: var(--box-shadow-nav-mobile);
+    transition: all .5s;
+  }
+
+  @media screen and (max-width: 600px) {
+    font-size: 14px;
+  }
+
+  &Blur {
+    display: none;
+
+    @media screen and (max-width: 800px) {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 45;
+      background: rgba(0,0,0,.2);
+      backdrop-filter: blur(1px);
+    }
+  }
+}
+
+.navigationMobileAbled {
+  @media screen and (max-width: 800px) {
+    left: 0;
+  }
+
+  &Blur {
+    @media screen and (max-width: 800px) {
+      display: block;
+      border: none;
+    }
+  }
+}
+
+.asideHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  width: 100%;
+  padding: 0 15px;
+  background-color: #303030;
+
+  &Options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    width: 100%;
+    max-width: 90px;
+  }
+
+  &Profile {
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    height: 50px;
+    width: 100%;
+    text-decoration: none;
+    background-color: #4f4f4f;
+    color: #fff;
+    transition: all .3s;
+    
+    & svg {
+      fill: #fff;
+      width: 25px;
+      height: 25px;
+      margin-right: 15px;
+    }
+    &:hover {
+      background-color: #757575;
+    }
+  }
+
+  &Products {
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    height: 50px;
+    width: 100%;
+    color: #e00027;
+    text-decoration: none;
+    transition: all .3s;
+
+    & svg {
+      fill: #e00027;
+      width: 25px;
+      height: 25px;
+      margin-right: 15px;
+    }
+    &:hover {
+      background-color: var(--hover-color);
+    }
+  }
+
+  &Selected {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    height: 50px;
+    width: 100%;
+    color: var(--input-text-color);
+    text-decoration: none;
+    transition: all .3s;
+
+    & svg {
+      fill: var(--input-text-color);
+      width: 25px;
+      height: 25px;
+      margin-right: 15px;
+    }
+    &:hover {
+      background-color: var(--hover-color);
+    }
+  }
+}
+
+.link {
+  padding: 10px 35px;
+  background-color: #e00027;
+  color: #fff;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  transition: .2s;
+  text-decoration: none;
+
+  @media screen and (max-width: 1000px) {
+    padding: 10px 20px;
+  }
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
+
+  &Aside {
+    display: flex;
+  }
+  
+  & + & {
+    margin: 0 15px;
+  }
+ 
+  & svg {
+    margin-right: 10px;
+    fill: #fff;
+    width: 20px;
+    height: 20px;
+  }
+
+  &:hover {
+    background-color: #f97988;
+  }
+}
+
+.navList {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  
+  &Item {
+    padding: 0 15px;
+    transition: .2s;   
+    
+    @media screen and (max-width: 1000px) {
+      padding: 0 5px;
+    }
+    @media screen and (max-width: 800px) {
+      display: none;
+
+      &:last-child {
+        display: block;
+        padding: 0 0 0 15px;
+      }
+    }
+
+    & + & {
+      border-left: 1px solid #fff;
+
+      @media screen and (max-width: 1000px) {
+        border-left: none;
+      }
+    }
+  }
+
+  &ItemLink {
+    display: flex;
+    transition: .2s;
+    position: relative;
+    
+    & svg {
+      width: 40px;
+      height: 40px;
+      padding: 8px;
+      fill: #fff;
+    }
+
+    &:hover {
+      background-color: #565656;
+      border-radius: 6px;
+    }
+  }
+}
+
+.counter {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  right: -4px;
+  top: -6px;
+  color: #fff;
+  background-color: #e00027;
+  border-radius: 10px;
+  padding: 3px 5px;
+  font-size: 11px;
+
+  @media screen and (max-width: 500px) {
+    right: 15px;
+    top: 15px;
+  }
+}
+
+.noCount {
+  display: none;
+}
+
+.cartCounter {
+  right: -4px;
+  top: -6px;
+}

@@ -1,5 +1,7 @@
 {
   "Index": {
-    "title": "Привіт світ!"
+    "title": "Привіт світ!",
+    "login": "Логін!",
+    "locale": "{locale, select, uk {uk Українська} en {🇺🇸 English} other {Unknown}}"
   }
 }

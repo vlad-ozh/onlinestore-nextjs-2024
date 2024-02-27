@@ -1,4 +1,8 @@
 .header {
-  background: #8a4848;
+  background: var(--dark-box-background);
   margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  color: var(--light-text-color);
+  padding: 10px;
 }
