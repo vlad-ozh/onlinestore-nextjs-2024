@@ -7,7 +7,7 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 
 const ChangeDynamicThemeButton = dynamic(
-  () => import('@/ui/change-theme-button/view'),
+  () => import('@/ui/switch-theme-button/view'),
   { ssr: false }
 );
 

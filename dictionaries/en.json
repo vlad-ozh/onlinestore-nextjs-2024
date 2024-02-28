@@ -1,7 +1,6 @@
 {
   "Index": {
     "title": "Hello world!",
-    "login": "Login!",
-    "locale": "{locale, select, uk {uk Ukrainian} en {🇺🇸 English} other {Unknown}}"
+    "login": "Login!"
   }
 }

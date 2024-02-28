@@ -1,14 +1,10 @@
-@use './../../assets/common/container';
-@use './../../assets/common/fonts';
 
 .header {
-  font-family: fonts.$roboto;
   background-color: rgba(48, 48, 48, 0.6);
 }
 
 .navigation {
   backdrop-filter: blur(16px);
-  @extend %container;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -196,7 +192,6 @@
  
   & svg {
     margin-right: 10px;
-    fill: #fff;
     width: 20px;
     height: 20px;
   }
@@ -245,7 +240,6 @@
       width: 40px;
       height: 40px;
       padding: 8px;
-      fill: #fff;
     }
 
     &:hover {
