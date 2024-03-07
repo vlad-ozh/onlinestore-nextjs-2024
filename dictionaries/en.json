@@ -1,4 +1,11 @@
 {
+  "Header": {
+    "home": "Home",
+    "products": "Products",
+    "profile": "Profile",
+    "selected": "Selected",
+    "searchPlaceholder": "Search"
+  },
   "Index": {
     "title": "Hello world!",
     "login": "Login!"

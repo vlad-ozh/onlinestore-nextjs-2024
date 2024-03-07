@@ -1,17 +1,17 @@
 'use client';
 
+import React from 'react';
 import { useLocale } from 'next-intl';
 import { usePathname, useRouter } from 'next/navigation';
-import { useTransition } from 'react';
 import { locales } from '@/i18n';
 
 import styles from './styles.module.scss';
 
-export const ChangeLanguageButton = () => {
+export const SwitchLanguageButton: React.FC = () => {
   const router = useRouter();
   const pathname = usePathname();
   const locale = useLocale();
-  const [isPending, startTransition] = useTransition();
+  const [isPending, startTransition] = React.useTransition();
 
   const changeLocale = () => {
     const nextLocale = locale === locales[0] ? locales[1] : locales[0];
@@ -50,4 +50,4 @@ export const ChangeLanguageButton = () => {
   );
 };
 
-export default ChangeLanguageButton;
+export default SwitchLanguageButton;

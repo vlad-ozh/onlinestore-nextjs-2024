@@ -6,9 +6,9 @@
   border: none;
   background-color: transparent;
   border-radius: 6px;
+  color: var(--light-text-color);
 
   &:hover {
-    background-color: #555;
-    border-radius: 6px;
+    background-color: var(--grey-hover-color);
   }
 }

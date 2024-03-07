@@ -4,19 +4,41 @@ html[class='dark'] {
   --background: #000;
   --text-color: #e8e8e8;
 
+  --header-background: rgba(33, 33, 33, .85);
+
   --box-background: #232323;
+
+  --box-shadow-nav-mobile: 2px 0 6px 2px rgba(255, 255, 255, .2);
+
+  --input-background-color: #000;
+  --input-placeholder-color: #bababa;
+
+  --hover-color: #282828;
 }
+
 html[class='light'] {
   --background: #fff;
   --text-color: #000;
 
+  --header-background: rgba(22, 22, 22, .85);
+
   --box-background: #fff;
+
+  --box-shadow-nav-mobile: 2px 0 6px 2px rgba(0, 0, 0, .2);
+
+  --input-background-color: #fff;
+  --input-placeholder-color: #717171;
+
+  --hover-color: #ddd;
 }
 
 // Other variables
 
 :root {
   --accent-color: #e00027;
+  --hover-accent-color: #f97988;
+
+  --grey-hover-color: #555;
 
   --dark-box-background: #222;
 

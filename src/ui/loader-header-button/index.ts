@@ -1,0 +1,1 @@
+export { LoaderHeaderButton } from './view';

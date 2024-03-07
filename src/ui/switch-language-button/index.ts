@@ -1,1 +1,1 @@
-export { ChangeLanguageButton } from './view';
+export { SwitchLanguageButton } from './view';

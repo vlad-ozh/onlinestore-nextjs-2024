@@ -1,1 +1,1 @@
-export { ChangeThemeButton } from './view';
+export { SwitchThemeButton } from './view';

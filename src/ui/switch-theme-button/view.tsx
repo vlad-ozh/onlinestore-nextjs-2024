@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import { useTheme } from 'next-themes';
 import { SunIcon, MoonIcon } from '@heroicons/react/24/outline';
 
@@ -8,7 +9,7 @@ import styles from './styles.module.scss';
 const darkThemeName = 'dark';
 const lightThemeName = 'light';
 
-export const ChangeThemeButton = () => {
+export const SwitchThemeButton: React.FC = () => {
   const { setTheme, resolvedTheme } = useTheme();
 
   return (
@@ -33,4 +34,4 @@ export const ChangeThemeButton = () => {
   );
 };
 
-export default ChangeThemeButton;
+export default SwitchThemeButton;

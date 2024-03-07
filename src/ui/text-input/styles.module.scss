@@ -1,0 +1,25 @@
+.input {
+  box-sizing: border-box;
+  width: 100%;
+  color: var(--text-color);
+  font-size: 16px;
+  padding: 0 15px;
+  transition: all .3s;
+  height: 40px;
+  background-color: var(--input-background-color);
+  outline: none;
+  
+  @media screen and (max-width: 600px) {
+    font-size: 14px;
+  }
+  
+  &::placeholder {
+    color: var(--input-placeholder-color);
+  }
+  &:hover {
+    border-color: var(--accent-color);
+  } 
+  &:focus {
+    border-color: var(--accent-color);
+  } 
+}

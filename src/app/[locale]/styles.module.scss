@@ -8,6 +8,7 @@
     position: sticky;
     top: 0;
     z-index: 9;
+    margin-bottom: 15px;
   }
 
   &Content {
@@ -33,10 +34,4 @@
   &Bottom {
     flex: 0 0 auto;
   }
-}
-
-.block {
-  width: 100px;
-  height: 100px;
-  background-color: var(--block);
 }

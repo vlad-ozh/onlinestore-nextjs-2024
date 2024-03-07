@@ -1,4 +1,11 @@
 {
+  "Header": {
+    "home": "Головна",
+    "products": "Каталог",
+    "profile": "Профіль",
+    "selected": "Обране",
+    "searchPlaceholder": "Пошук"
+  },
   "Index": {
     "title": "Привіт світ!",
     "login": "Логін!"

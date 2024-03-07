@@ -1,6 +1,7 @@
+import React from 'react';
 import styles from './styles.module.scss';
 
-export const Footer = () => {
+export const Footer: React.FC = () => {
   const getCurrentYear = () => {
     const date = new Date();
 

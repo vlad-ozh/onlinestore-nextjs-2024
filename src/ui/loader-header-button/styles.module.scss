@@ -1,0 +1,18 @@
+.container {
+  padding: 8px;
+
+  &Loader {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 3px solid var(--grey-hover-color);
+    border-top-color: var(--accent-color);
+    animation: spin 1s ease-in-out infinite;
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}

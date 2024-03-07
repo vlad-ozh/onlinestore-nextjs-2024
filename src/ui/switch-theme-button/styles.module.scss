@@ -8,8 +8,7 @@
   border-radius: 6px;
 
   &:hover {
-    background-color: #555;
-    border-radius: 6px;
+    background-color: var(--grey-hover-color);
   }
 
   &Icon {

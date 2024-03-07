@@ -1,0 +1,11 @@
+.submit {
+  cursor: pointer;
+  background-color: var(--accent-color);
+  border: none;
+  transition: all .2s;
+  color: #fff;
+
+  &:hover {
+    background-color: var(--hover-accent-color);
+  }
+}

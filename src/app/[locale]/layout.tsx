@@ -3,7 +3,6 @@ import { Footer, Header } from '@/components';
 import { Metadata } from 'next';
 import { inter } from '@/ui';
 import '@/styles/globals.scss';
-import '@/styles/variables.scss';
 import styles from './styles.module.scss';
 
 export const metadata: Metadata = {
