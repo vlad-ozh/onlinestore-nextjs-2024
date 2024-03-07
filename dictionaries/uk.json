@@ -6,6 +6,11 @@
     "selected": "Обране",
     "searchPlaceholder": "Пошук"
   },
+  "Categories": {
+    "smartphones": "Смартфони",
+    "tablets": "Планшети",
+    "laptops": "Ноутбуки"
+  },
   "Index": {
     "title": "Привіт світ!",
     "login": "Логін!"

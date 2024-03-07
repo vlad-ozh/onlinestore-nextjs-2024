@@ -25,4 +25,5 @@ export const routes = {
   toLogin: () => '/login',
   toFavorites: () => '/products/favorites',
   toCart: () => '/account/cart',
+  toCategory: ( category: string ) => `/products/${category}`,
 };

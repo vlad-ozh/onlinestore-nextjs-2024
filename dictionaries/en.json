@@ -6,6 +6,11 @@
     "selected": "Selected",
     "searchPlaceholder": "Search"
   },
+  "Categories": {
+    "smartphones": "Smartphones",
+    "tablets": "Tablets",
+    "laptops": "Laptops"
+  },
   "Index": {
     "title": "Hello world!",
     "login": "Login!"
