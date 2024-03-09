@@ -1,0 +1,31 @@
+
+.breadcrumbs {
+  display: flex;
+  font-size: 14px;
+  list-style: none;
+  overflow-x: auto;
+  padding: 15px 0 10px;
+
+  @media screen and (max-width: 600px) {
+    font-size: 12px;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &Item {
+    white-space: nowrap;
+    text-transform: capitalize;
+  }
+
+  &ItemLink {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &ItemSlash {
+    padding: 0 6px;
+  }
+}

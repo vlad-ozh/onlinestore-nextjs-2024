@@ -1,4 +1,25 @@
 {
+  "Breadcrumbs": {
+    "home": "Інтернет магазин",
+    "login": "Вхід",
+    "register": "Реєстрація",
+    "forgotPassword": "Забули пароль",
+    "resetPassword": "Відновлення паролю",
+    "profile": "Профіль",
+    "profileInfo": "Особиста інформація",
+    "products": "Каталог",
+    "search": "Результати пошуку для {search}",
+    "selected": "Обране",
+    "cart": "Кошик",
+    "orders": "Мої замовлення",
+    "smartphones": "Смартфони",
+    "tablets": "Планшети",
+    "laptops": "Ноутбуки",
+    "headphones": "Навушники",
+    "televisions": "Телевізори",
+    "all": "Всі",
+    "checkout": "Оформлення замовлення"
+  },
   "Header": {
     "home": "Головна",
     "products": "Каталог",
@@ -10,9 +31,5 @@
     "smartphones": "Смартфони",
     "tablets": "Планшети",
     "laptops": "Ноутбуки"
-  },
-  "Index": {
-    "title": "Привіт світ!",
-    "login": "Логін!"
   }
 }
