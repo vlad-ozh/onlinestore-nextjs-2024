@@ -1,4 +1,25 @@
 {
+  "Breadcrumbs": {
+    "home": "Online store",
+    "login": "Log in",
+    "register": "Register",
+    "forgotPassword": "Forgot password",
+    "resetPassword": "Reset password",
+    "profile": "Profile",
+    "profileInfo": "Personal information",
+    "products": "Products",
+    "search": "Search results for {search}",
+    "selected": "Selected",
+    "cart": "Cart",
+    "orders": "My orders",
+    "smartphones": "Smartphones",
+    "tablets": "Tablets",
+    "laptops": "Laptops",
+    "headphones": "Headphones",
+    "televisions": "Televisions",
+    "all": "All",
+    "checkout": "Checkout"
+  },
   "Header": {
     "home": "Home",
     "products": "Products",
@@ -6,8 +27,9 @@
     "selected": "Selected",
     "searchPlaceholder": "Search"
   },
-  "Index": {
-    "title": "Hello world!",
-    "login": "Login!"
+  "Categories": {
+    "smartphones": "Smartphones",
+    "tablets": "Tablets",
+    "laptops": "Laptops"
   }
 }

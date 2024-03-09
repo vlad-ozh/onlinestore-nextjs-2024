@@ -9,6 +9,8 @@ html[class='dark'] {
   --box-background: #232323;
 
   --box-shadow-nav-mobile: 2px 0 6px 2px rgba(255, 255, 255, .2);
+  --box-shadow: 1px 1px 8px 1px rgba(255, 255, 255, .2);
+  --box-shadow-hover: 1px 1px 8px 1px rgba(255, 255, 255, .5);
 
   --input-background-color: #000;
   --input-placeholder-color: #bababa;
@@ -25,11 +27,13 @@ html[class='light'] {
   --box-background: #fff;
 
   --box-shadow-nav-mobile: 2px 0 6px 2px rgba(0, 0, 0, .2);
+  --box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, .1);
+  --box-shadow-hover: 1px 1px 8px 1px rgba(0, 0, 0, .5);
 
   --input-background-color: #fff;
   --input-placeholder-color: #717171;
 
-  --hover-color: #ddd;
+  --hover-color: #f1f1f1;
 }
 
 // Other variables

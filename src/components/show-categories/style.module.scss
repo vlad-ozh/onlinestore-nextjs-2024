@@ -1,0 +1,49 @@
+.categories {
+  &List {
+    list-style: none;
+    display: flex;
+    padding: 10px;
+    margin: 0 -10px;
+    overflow-x: auto;
+  
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    @media screen and (max-width: 600px) { 
+      font-size: 14px;
+    }
+  }
+  
+  &Item {
+    width: 100%;
+
+    & + & {
+      margin-left: 15px;
+    }
+  }
+  
+  &ItemLink {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    height: 150px;
+    min-width: 100px;
+    padding: 10px;
+    background-color: var(--box-background);
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+    transition: all .3s;
+
+    &:hover {
+      box-shadow: var(--box-shadow-hover);
+      background-color: var(--hover-color);
+    }
+
+    & svg {
+      margin-bottom: 10px;
+    }
+  }
+}
