@@ -10,7 +10,7 @@
 //   accountInfo: '/account/info',
 //   accountOrders: '/account/orders',
 //   products: '/products',                                     +
-//   openProductsCategory: '/products/:category',
+//   openProductsCategory: '/products/:category',               +
 //   openProducts: '/products/:category/:brand/page/:page',
 //   openProduct: '/products/:category/:brand/:productId',
 //   searchProducts: '/products/search/:data',
@@ -21,9 +21,9 @@
 
 export const routes = {
   toHome: () => '/',
-  toProducts: () => '/products',
   toLogin: () => '/login',
-  toFavorites: () => '/products/favorites',
   toCart: () => '/account/cart',
+  toFavorites: () => '/account/favorites',
+  toProducts: () => '/products',
   toCategory: ( category: string ) => `/products/${category}`,
 };
