@@ -1,12 +1,10 @@
-// import { getUser } from '@/lib/data';
 import { Breadcrumbs, ShowCategories } from '@/components';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
 import styles from './styles.module.scss';
 
-export default function Home() {
-  const t = useTranslations('Breadcrumbs');
-  // const users = await getUser();
+export default async function Home() {
+  const t = await getTranslations('Breadcrumbs');
 
   return (
     <main className={styles.main}>

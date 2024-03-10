@@ -7,15 +7,9 @@ import {
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { routes } from '@/utils/navigation-routes';
-import { ICategoriesList } from '@/types/products';
+import { categories } from '@/utils/categories';
 
 import style from './style.module.scss';
-
-const categories: ICategoriesList = {
-  smartphones: 'smartphones',
-  tablets: 'tablets',
-  laptops: 'laptops',
-};
 
 export const ShowCategories: React.FC = () => {
   const t = useTranslations('Categories');

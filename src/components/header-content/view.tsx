@@ -29,13 +29,13 @@ const SwitchLanguageButton = dynamic(
 );
 
 export const HeaderContent: React.FC = () => {
-  const t = useTranslations();
+  const t = useTranslations('Header');
 
   const [ navMobile, setNavMobile ] = React.useState<boolean>(false);
 
   const {
     toHome,
-    toProducts,
+    toCategories,
     toLogin,
     toFavorites,
     toCart,
@@ -55,7 +55,7 @@ export const HeaderContent: React.FC = () => {
               className={clsx(styles.navLink, styles.navMobileTopLink)}
             >
               <HomeIcon width={24}/>
-              {t('Header.home')}
+              {t('home')}
             </Link>
 
             <div className={styles.navMobileTopOptions}>
@@ -65,15 +65,15 @@ export const HeaderContent: React.FC = () => {
           </div>
           <Link href={toLogin()} className={styles.navMobileProfile} >
             <UserIcon width={24} />
-            {t('Header.profile')}
+            {t('profile')}
           </Link>
-          <Link href={toProducts()} className={styles.navMobileProducts}>
+          <Link href={toCategories()} className={styles.navMobileProducts}>
             <ListBulletIcon width={24} />
-            {t('Header.products')}
+            {t('products')}
           </Link>
           <Link href={toFavorites()} className={styles.navMobileSelected} >
             <HeartIcon width={24} />
-            {t('Header.selected')}
+            {t('selected')}
           </Link>
         </div>
 
@@ -100,14 +100,14 @@ export const HeaderContent: React.FC = () => {
             className={styles.navLink}
           >
             <HomeIcon width={24} />
-            {t('Header.home')}
+            {t('home')}
           </Link>
           <Link
-            href={toProducts()}
+            href={toCategories()}
             className={styles.navLink}
           >
             <ListBulletIcon width={24} />
-            {t('Header.products')}
+            {t('products')}
           </Link>
         </div>
 

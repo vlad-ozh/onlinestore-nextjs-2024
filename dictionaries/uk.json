@@ -31,5 +31,10 @@
     "smartphones": "Смартфони",
     "tablets": "Планшети",
     "laptops": "Ноутбуки"
+  },
+  "Category": {
+    "all": "Всі",
+    "brandsTitle": "Виробники",
+    "noCategory": "Категорію не знайдено"
   }
 }
