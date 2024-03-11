@@ -34,7 +34,10 @@
   },
   "Category": {
     "all": "All",
-    "brandsTitle": "Brands",
-    "noCategory": "Category not found"
+    "brandsTitle": "Brands"
+  },
+  "NoData": {
+    "noCategory": "Category not found",
+    "goHome": "Go home"
   }
 }

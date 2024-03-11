@@ -3,7 +3,7 @@ import { routes } from '@/utils/navigation-routes';
 import { TCategoriesList } from '@/types/products';
 import { getCategoryInfo } from '@/lib/data';
 import { getTranslations } from 'next-intl/server';
-import { NoData } from '@/ui';
+import { notFound } from 'next/navigation';
 
 import styles from './styles.module.scss';
 
@@ -13,22 +13,19 @@ export default async function Category({ params }: {
   const categoryParam = params.category;
   const category = await getCategoryInfo(categoryParam);
 
-  const tBreadcrumbs = await getTranslations('Breadcrumbs');
-  const tCategory = await getTranslations('Category');
+  const t = await getTranslations('Breadcrumbs');
+
+  if (!category) notFound();
 
   return (
     <main className={styles.main}>
       <Breadcrumbs breadcrumbs={[
-        { name: tBreadcrumbs('home'), path: routes.toHome() },
-        { name: tBreadcrumbs('products'), path: routes.toCategories() },
-        { name: category ? tBreadcrumbs(category.name) : '...', path: '' },
+        { name: t('home'), path: routes.toHome() },
+        { name: t('products'), path: routes.toCategories() },
+        { name: t(category.name), path: '' },
       ]} />
 
-      {category ?
-        <ShowCategory category={category} categoryParam={categoryParam} />
-        :
-        <NoData text={tCategory('noCategory')} />
-      }
+      <ShowCategory category={category} categoryParam={categoryParam} />
     </main>
   );
 }
