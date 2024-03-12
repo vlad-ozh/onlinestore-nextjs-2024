@@ -10,6 +10,9 @@ export const getCategoryInfo = async (categoryParam: string) => {
 
   try {
     connectToDb();
+
+    await new Promise((resolve) => setTimeout(resolve, 700));
+
     const category = await CategoryModel.findOne({ name: categoryParam });
 
     if (!category) return undefined;

@@ -52,6 +52,7 @@ export const HeaderContent: React.FC = () => {
           <div className={styles.navMobileTop}>
             <Link
               href={toHome()}
+              onClick={() => setNavMobile(false)}
               className={clsx(styles.navLink, styles.navMobileTopLink)}
             >
               <HomeIcon width={24}/>
@@ -63,15 +64,27 @@ export const HeaderContent: React.FC = () => {
               <SwitchLanguageButton />
             </div>
           </div>
-          <Link href={toLogin()} className={styles.navMobileProfile} >
+          <Link
+            href={toLogin()}
+            onClick={() => setNavMobile(false)}
+            className={styles.navMobileProfile}
+          >
             <UserIcon width={24} />
             {t('profile')}
           </Link>
-          <Link href={toCategories()} className={styles.navMobileProducts}>
+          <Link
+            href={toCategories()}
+            onClick={() => setNavMobile(false)}
+            className={styles.navMobileProducts}
+          >
             <ListBulletIcon width={24} />
             {t('products')}
           </Link>
-          <Link href={toFavorites()} className={styles.navMobileSelected} >
+          <Link
+            href={toFavorites()}
+            onClick={() => setNavMobile(false)}
+            className={styles.navMobileSelected}
+          >
             <HeartIcon width={24} />
             {t('selected')}
           </Link>
