@@ -1,5 +1,12 @@
 export interface ICategoriesList {
-  smartphones: string;
-  tablets: string;
-  laptops: string;
+  smartphones: 'smartphones';
+  tablets: 'tablets';
+  laptops: 'laptops';
+};
+
+export type TCategoriesList = 'smartphones' | 'tablets' | 'laptops';
+
+export interface ICategory {
+  name: TCategoriesList;
+  brands: string[];
 };

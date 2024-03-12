@@ -1,0 +1,53 @@
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  background-color: var(--box-background);
+  width: 100%;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: var(--box-shadow);
+  list-style: none;
+}
+
+.category {
+  min-width: 200px;
+  padding: 15px;
+  border: 1px dashed var(--accent-color);
+  text-align: center;
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
+
+  &Title {
+    margin-bottom: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    
+    @media screen and (max-width: 600px) {
+      font-size: 18px;
+    }
+  }
+
+  &TitleBrands {
+    margin-bottom: 15px;
+    
+    @media screen and (max-width: 600px) {
+      font-size: 16px;
+    }
+  }
+  
+  &Brands {
+    text-align: center;
+    list-style: none;
+  }
+
+  &BrandsItem {
+    & + & {
+      margin-top: 7px;
+    }
+  }
+}

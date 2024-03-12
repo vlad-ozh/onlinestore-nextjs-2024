@@ -31,5 +31,14 @@
     "smartphones": "Smartphones",
     "tablets": "Tablets",
     "laptops": "Laptops"
+  },
+  "Category": {
+    "all": "All",
+    "brandsTitle": "Brands"
+  },
+  "NoData": {
+    "noCategory": "Category not found",
+    "noCategories": "Categories not found",
+    "goHome": "Go home"
   }
 }

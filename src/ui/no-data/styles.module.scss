@@ -1,0 +1,26 @@
+.noData {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &Icon {
+    margin-bottom: 15px;
+  }
+
+  &Title {
+    font-size: 20px;
+    margin-bottom: 25px;
+
+    @media screen and (max-width: 800px) {
+      font-size: 18px;
+    }
+  }
+
+  &Link {
+    padding: 8px 30px;
+    background-color: var(--accent-color);
+    border-radius: 6px;
+    color: var(--light-text-color);
+    transition: all .2s;
+  }
+}
