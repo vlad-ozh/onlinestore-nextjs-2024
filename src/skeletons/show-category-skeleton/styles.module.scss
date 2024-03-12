@@ -1,0 +1,38 @@
+.skeleton {
+  background-color: var(--box-background);
+  width: 100%;
+  min-height: 350px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: var(--box-shadow);
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    transform: translateX(-100%);
+
+    animation: shimmer 1.5s infinite;
+
+    background-image: linear-gradient(to right, transparent, var(--shimmer-color), transparent);
+  }
+
+  @keyframes shimmer {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(100%);
+    }
+  }
+
+  &Inner {
+    border-radius: 12px;
+    flex: 1;
+    background-color: var(--hover-color);
+  }
+}

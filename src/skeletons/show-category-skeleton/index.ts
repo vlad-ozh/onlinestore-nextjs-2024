@@ -1,0 +1,1 @@
+export { ShowCategorySkeleton } from './view';
