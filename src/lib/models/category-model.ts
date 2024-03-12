@@ -1,12 +1,16 @@
-import { Schema, model, models } from 'mongoose';
+import { Document, Model, Schema, model, models } from 'mongoose';
 import { categoryModelName } from './model-names';
+import { ICategory } from '@/types/products';
 
 const CategorySchema = new Schema({
   name: { type: String, unique: true, required: true },
   brands: { type: [String], required: true, default: [] },
 });
 
-export const CategoryModel = models[categoryModelName] || model(
+interface ICategoryDocument extends ICategory, Document {}
+interface ICategoryModel extends Model<ICategoryDocument> {}
+
+export const CategoryModel: ICategoryModel = models[categoryModelName] || model(
   categoryModelName,
   CategorySchema
 );

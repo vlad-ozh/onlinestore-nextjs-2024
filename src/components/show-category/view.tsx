@@ -23,13 +23,13 @@ export const ShowCategory: React.FC<IProps> = async (props) => {
   return (
     <div className={styles.category}>
       <h2 className={styles.categoryTitle}>
-        {category && tCategoryTitle(category.name)}
+        {tCategoryTitle(category.name)}
       </h2>
       <h3 className={styles.categoryTitleBrands}>
         {t('brandsTitle')}
       </h3>
       <ul className={styles.categoryBrands}>
-        {category && category.brands.map((brand, index) => {
+        {category.brands.map((brand, index) => {
           return (
             <li key={index} className={styles.categoryBrandsItem}>
               <LinkAnimated

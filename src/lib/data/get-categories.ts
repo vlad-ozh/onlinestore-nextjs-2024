@@ -13,7 +13,7 @@ export const getCategoriesInfo = async () => {
     connectToDb();
     const categories = await CategoryModel.find();
 
-    const categoriesDto: ICategory[] = categories
+    const categoriesDto = categories
       .map(category => {
         if (!category.brands.length) return;
 
