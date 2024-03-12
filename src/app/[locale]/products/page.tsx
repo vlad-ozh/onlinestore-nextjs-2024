@@ -1,6 +1,8 @@
-import { Breadcrumbs } from '@/components';
-import { useTranslations } from 'next-intl';
+import { Breadcrumbs, ShowAllCategories } from '@/components';
 import { routes } from '@/utils/navigation-routes';
+import { useTranslations } from 'next-intl';
+import { Suspense } from 'react';
+import { ShowCategorySkeleton } from '@/skeletons';
 
 import styles from './styles.module.scss';
 
@@ -13,6 +15,10 @@ export default function Products() {
         { name: t('home'), path: routes.toHome() },
         { name: t('products'), path: '' },
       ]}/>
+
+      <Suspense fallback={<ShowCategorySkeleton />}>
+        <ShowAllCategories />
+      </Suspense>
     </main>
   );
 }

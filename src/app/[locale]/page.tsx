@@ -1,4 +1,4 @@
-import { Breadcrumbs, ShowCategories } from '@/components';
+import { Breadcrumbs, ShowHomeCategories } from '@/components';
 import { getTranslations } from 'next-intl/server';
 
 import styles from './styles.module.scss';
@@ -11,7 +11,7 @@ export default async function Home() {
       <Breadcrumbs breadcrumbs={[
         { name: t('home'), path: '' },
       ]}/>
-      <ShowCategories />
+      <ShowHomeCategories />
     </main>
   );
 }

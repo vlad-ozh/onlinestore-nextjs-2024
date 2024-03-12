@@ -11,7 +11,7 @@ import { categories } from '@/utils/categories';
 
 import style from './style.module.scss';
 
-export const ShowCategories: React.FC = () => {
+export const ShowHomeCategories: React.FC = () => {
   const t = useTranslations('Categories');
 
   return (

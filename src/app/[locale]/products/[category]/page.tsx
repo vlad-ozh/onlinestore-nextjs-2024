@@ -1,31 +1,30 @@
 import { Breadcrumbs, ShowCategory } from '@/components';
 import { routes } from '@/utils/navigation-routes';
 import { TCategoriesList } from '@/types/products';
-import { getCategoryInfo } from '@/lib/data';
-import { getTranslations } from 'next-intl/server';
-import { notFound } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 import styles from './styles.module.scss';
+import { Suspense } from 'react';
+import { ShowCategorySkeleton } from '@/skeletons';
 
-export default async function Category({ params }: {
+export default function Category({ params }: {
   params: { category: TCategoriesList }
 }) {
   const categoryParam = params.category;
-  const category = await getCategoryInfo(categoryParam);
 
-  const t = await getTranslations('Breadcrumbs');
-
-  if (!category) notFound();
+  const t = useTranslations('Breadcrumbs');
 
   return (
     <main className={styles.main}>
       <Breadcrumbs breadcrumbs={[
         { name: t('home'), path: routes.toHome() },
         { name: t('products'), path: routes.toCategories() },
-        { name: t(category.name), path: '' },
+        { name: t(categoryParam), path: '' },
       ]} />
 
-      <ShowCategory category={category} categoryParam={categoryParam} />
+      <Suspense fallback={<ShowCategorySkeleton />}>
+        <ShowCategory categoryParam={categoryParam} />
+      </Suspense>
     </main>
   );
 }

@@ -1,50 +1,51 @@
 import React from 'react';
-import { useTranslations } from 'next-intl';
-import Link from 'next/link';
 import { routes } from '@/utils/navigation-routes';
-import { ICategory } from '@/types/products';
+import { getTranslations } from 'next-intl/server';
+import { notFound } from 'next/navigation';
+import { getCategoryInfo } from '@/lib/data';
+import { LinkAnimated } from '@/ui';
 
-import style from './style.module.scss';
+import styles from './styles.module.scss';
 
 interface IProps {
-  category: ICategory;
   categoryParam: string;
 }
 
-export const ShowCategory: React.FC<IProps> = (props) => {
-  const { category, categoryParam } = props;
+export const ShowCategory: React.FC<IProps> = async (props) => {
+  const { categoryParam } = props;
+  const category = await getCategoryInfo(categoryParam);
 
-  const tCategoryTitle = useTranslations('Categories');
-  const t = useTranslations('Category');
+  if (!category) notFound();
+
+  const t = await getTranslations('Category');
+  const tCategoryTitle = await getTranslations('Categories');
 
   return (
-    <div className={style.category}>
-      <h2 className={style.categoryTitle}>
+    <div className={styles.category}>
+      <h2 className={styles.categoryTitle}>
         {category && tCategoryTitle(category.name)}
       </h2>
-      <h3 className={style.categoryTitleBrands}>
+      <h3 className={styles.categoryTitleBrands}>
         {t('brandsTitle')}
       </h3>
-      <ul className={style.categoryBrands}>
+      <ul className={styles.categoryBrands}>
         {category && category.brands.map((brand, index) => {
           return (
-            <li key={index} className={style.categoryBrandsItem}>
-              <Link
+            <li key={index} className={styles.categoryBrandsItem}>
+              <LinkAnimated
                 href={routes.toProducts(categoryParam, brand)}
-                className={style.categoryBrandsItemLink}
               >
                 {brand}
-              </Link>
+              </LinkAnimated>
             </li>
           );
         })}
-        <li className={style.categoryBrandsItem}>
-          <Link
+        <li className={styles.categoryBrandsItem}>
+          <LinkAnimated
             href={routes.toProducts(categoryParam, 'all')}
-            className={style.categoryBrandsItemLink}
           >
             {t('all')}
-          </Link>
+          </LinkAnimated>
         </li>
       </ul>
     </div>

@@ -38,6 +38,7 @@
   },
   "NoData": {
     "noCategory": "Category not found",
+    "noCategories": "Categories not found",
     "goHome": "Go home"
   }
 }

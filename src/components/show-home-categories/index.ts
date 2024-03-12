@@ -1,0 +1,1 @@
+export { ShowHomeCategories } from './view';
