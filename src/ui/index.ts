@@ -5,3 +5,4 @@ export { SubmitIcon } from './submit-icon';
 export { TextInput } from './text-input';
 export { LoaderHeaderButton } from './loader-header-button';
 export { NoData } from './no-data';
+export { LinkAnimated } from './link-animated';
