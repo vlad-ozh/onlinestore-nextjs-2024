@@ -11,6 +11,9 @@ export const getCategoriesInfo = async () => {
 
   try {
     connectToDb();
+
+    await new Promise((resolve) => setTimeout(resolve, 700));
+
     const categories = await CategoryModel.find();
 
     const categoriesDto = categories
