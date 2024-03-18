@@ -11,8 +11,8 @@
 //   accountOrders: '/account/orders',
 //   products: '/products',                                     +
 //   openProductsCategory: '/products/:category',               +
-//   openProducts: '/products/:category/:brand/page/:page',
-//   openProduct: '/products/:category/:brand/:productId',
+//   openProducts: '/products/:category/:brand/page/:page',     +-
+//   openProduct: '/products/:category/:brand/:productId',      +
 //   searchProducts: '/products/search/:data',
 //   selected: '/products/selected',                            +
 //   checkout: '/checkout',
@@ -21,11 +21,13 @@
 
 export const routes = {
   toHome: () => '/',
-  toLogin: () => '/login',
+  toSignIn: () => '/sign-in',
   toCart: () => '/account/cart',
   toFavorites: () => '/account/favorites',
   toCategories: () => '/products',
   toCategory: ( category: string ) => `/products/${category}`,
   toProducts: ( category: string, brand: string ) =>
     `/products/${category}/${brand}`,
+  toProduct: ( category: string, brand: string, id: string ) =>
+    `/products/${category}/${brand}/${id}`,
 };

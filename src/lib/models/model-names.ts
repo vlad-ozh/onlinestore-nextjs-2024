@@ -1,2 +1,2 @@
-export const userModelName: string = 'NextUser';
 export const categoryModelName: string = 'Category';
+export const productModelName: string = 'Product';

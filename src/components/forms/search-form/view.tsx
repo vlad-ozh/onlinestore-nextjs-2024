@@ -3,7 +3,7 @@
 import { useForm } from 'react-hook-form';
 import { SubmitIcon, TextInput } from '@/ui';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
-import { ISearchForm } from '@/types/forms';
+import { ISearchForm } from '@/types/form-types';
 import { useTranslations } from 'next-intl';
 
 import style from './styles.module.scss';

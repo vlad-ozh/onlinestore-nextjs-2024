@@ -1,0 +1,75 @@
+.card {
+  padding: 15px 15px 20px;
+  background-color: var(--box-background);
+  border-radius: 6px;
+  box-shadow: var(--box-shadow);
+  text-align: center;
+  transition: all .3s;
+  min-height: 385px;
+  height: 100%;
+  max-width: 400px;
+
+  &:hover {
+    transform: scale(1.015);
+    box-shadow: var(--box-shadow-hover);
+  }
+
+  @media screen and (max-width: 500px) {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    min-height: auto;
+  }
+
+  &Info {
+    @media screen and (max-width: 500px) {
+      padding-left: 18px;
+      width: 100%;
+    }
+  }
+
+  &Link {
+    color: var(--text-color);
+  }
+
+  &Title {
+    margin-bottom: 5px;
+    font-size: 14px;
+    height: 36px;
+  }
+
+  &ImageContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 220px;
+
+    @media screen and (max-width: 500px) {
+      height: auto;
+    }
+  }
+
+  &Image {
+    max-width: 210px;
+    width: 100%;
+    margin-bottom: 10px;
+
+    @media screen and (max-width: 500px) {
+      max-width: 130px;
+      margin-bottom: 0;
+    }
+  }
+
+  &Main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  &Buy {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

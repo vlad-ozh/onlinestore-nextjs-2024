@@ -1,15 +1,32 @@
 import createMiddleware from 'next-intl/middleware';
 import { locales } from './i18n';
+import { authMiddleware } from '@clerk/nextjs';
 
-export default createMiddleware({
+const intlMiddleware = createMiddleware({
   locales,
   defaultLocale: 'en',
+});
+
+export default authMiddleware({
+  beforeAuth: (req) => {
+    return intlMiddleware(req);
+  },
+
+  publicRoutes: [
+    '/',
+    '/:locale',
+    '/:locale/sign-up',
+    '/:locale/sign-in',
+    '/:locale/products',
+    '/:locale/products/:category',
+  ],
 });
 
 export const config = {
   matcher: [
     '/',
     '/(uk|en)/:path*',
-    '/((?!_next|_vercel|.*\\..*).*)',
+    '/(api|trpc)(.*)',
+    '/((?!.+\\.[\\w]+$|_next|_vercel|.*\\..*).*)',
   ],
 };

@@ -36,7 +36,7 @@ export const HeaderContent: React.FC = () => {
   const {
     toHome,
     toCategories,
-    toLogin,
+    toSignIn,
     toFavorites,
     toCart,
   } = routes;
@@ -65,7 +65,7 @@ export const HeaderContent: React.FC = () => {
             </div>
           </div>
           <Link
-            href={toLogin()}
+            href={toSignIn()}
             onClick={() => setNavMobile(false)}
             className={styles.navMobileProfile}
           >
@@ -129,7 +129,7 @@ export const HeaderContent: React.FC = () => {
         <ul className={styles.navList}>
           <li className={styles.navListItem}>
             <Link
-              href={toLogin()}
+              href={toSignIn()}
               className={styles.navListItemLink}
             >
               <UserIcon width={24} />

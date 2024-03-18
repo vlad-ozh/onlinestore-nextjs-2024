@@ -1,6 +1,6 @@
 import { Breadcrumbs, ShowCategory } from '@/components';
 import { routes } from '@/utils/navigation-routes';
-import { TCategoriesList } from '@/types/products';
+import { TCategoriesList } from '@/types/products-types';
 import { useTranslations } from 'next-intl';
 
 import styles from './styles.module.scss';

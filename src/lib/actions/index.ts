@@ -1,1 +1,2 @@
-export { searchProducts } from './products/search-products';
+export { searchProducts } from './products-actions';
+export { login } from './user-actions';

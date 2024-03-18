@@ -1,10 +1,8 @@
 {
   "Breadcrumbs": {
     "home": "Online store",
-    "login": "Log in",
-    "register": "Register",
-    "forgotPassword": "Forgot password",
-    "resetPassword": "Reset password",
+    "signUp": "Sign up",
+    "signIn": "Sign in",
     "profile": "Profile",
     "profileInfo": "Personal information",
     "products": "Products",
@@ -40,5 +38,10 @@
     "noCategory": "Category not found",
     "noCategories": "Categories not found",
     "goHome": "Go home"
+  },
+  "Card": {
+    "rating": "Rating",
+    "buy": "To buy",
+	  "inCart": "In the cart"
   }
 }
