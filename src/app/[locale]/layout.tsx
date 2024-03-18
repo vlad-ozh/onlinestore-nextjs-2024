@@ -2,9 +2,11 @@ import { Providers } from './providers';
 import { Footer, Header } from '@/components';
 import { Metadata } from 'next';
 import { inter } from '@/ui';
-import '@/styles/globals.scss';
 import { ClerkProvider } from '@clerk/nextjs';
+import { ukUA } from '@clerk/localizations';
+import { locales } from '@/i18n';
 
+import '@/styles/globals.scss';
 import styles from './styles.module.scss';
 
 export const metadata: Metadata = {
@@ -22,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={inter.className}>
-        <ClerkProvider>
+        <ClerkProvider localization={locale === locales[1] ? ukUA : undefined}>
           <Providers>
             <div className={styles.layout}>
               <header className={styles.layoutTop}><Header /></header>
