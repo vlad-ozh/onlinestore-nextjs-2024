@@ -1,10 +1,8 @@
-import { Providers } from './providers';
+import { ThemeProvider } from './ThemeProvider';
 import { Footer, Header } from '@/components';
 import { Metadata } from 'next';
 import { inter } from '@/ui';
-import { ClerkProvider } from '@clerk/nextjs';
-import { ukUA } from '@clerk/localizations';
-import { locales } from '@/i18n';
+import { ClerkProvider } from './ClerkProvider';
 
 import '@/styles/globals.scss';
 import styles from './styles.module.scss';
@@ -16,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  params: {locale},
+  params: { locale },
 }: Readonly<{
   children: React.ReactNode;
   params: { locale: string };
@@ -24,15 +22,15 @@ export default function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={inter.className}>
-        <ClerkProvider localization={locale === locales[1] ? ukUA : undefined}>
-          <Providers>
+        <ThemeProvider>
+          <ClerkProvider locale={locale}>
             <div className={styles.layout}>
               <header className={styles.layoutTop}><Header /></header>
               <div className={styles.layoutContent}>{children}</div>
               <footer className={styles.layoutBottom}><Footer /></footer>
             </div>
-          </Providers>
-        </ClerkProvider>
+          </ClerkProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
