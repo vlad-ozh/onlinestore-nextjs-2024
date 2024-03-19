@@ -47,7 +47,7 @@ export const BuyButton: React.FC<IProps> = ({
       </Link>)}
 
       {!isUser && (<Link
-        href={routes.toLogin()}
+        href={routes.toSignIn()}
         className={clsx(style.cartLink, {
           [style.cartNoActive]: !amount,
         })}

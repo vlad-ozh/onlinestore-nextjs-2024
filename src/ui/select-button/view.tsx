@@ -35,7 +35,7 @@ export const SelectButton: React.FC<IProps> = ({
         :
         (
           <Link
-            href={routes.toLogin()}
+            href={routes.toSignIn()}
             className={style.selectLink}
           >
             <HeartIcon />
