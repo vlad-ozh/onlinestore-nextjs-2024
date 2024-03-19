@@ -1,8 +1,7 @@
 'use server';
 
-import { ICategory } from '@/types/products';
 import { connectToDb } from '../connect';
-import { CategoryDto } from '../dtos/category-dto';
+import { CategoryDto } from '../dtos';
 import { CategoryModel } from '../models';
 import { unstable_noStore as noStore } from 'next/cache';
 
@@ -16,17 +15,7 @@ export const getCategoriesInfo = async () => {
 
     const categories = await CategoryModel.find();
 
-    const categoriesDto = categories
-      .map(category => {
-        if (!category.brands.length) return;
-
-        return CategoryDto(category);
-      })
-      .reduce((acc: ICategory[], category) => {
-        if (category !== undefined) acc.push(category);
-
-        return acc;
-      }, []).reverse();
+    const categoriesDto = categories.map(category => CategoryDto(category));
 
     return categoriesDto;
   } catch (error: any) {

@@ -1,4 +1,4 @@
-import { ICategoriesList } from '@/types/products';
+import { ICategoriesList } from '@/types/products-types';
 
 export const categories: ICategoriesList = {
   smartphones: 'smartphones',

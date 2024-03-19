@@ -1,9 +1,6 @@
-import { TCategoriesList } from '@/types/products';
+import { ICategory } from '@/types/products-types';
 
-interface ICategoryDto {
-  name: TCategoriesList;
-  brands: string[];
-
+interface ICategoryDto extends ICategory {
   [key: string]: any;
 }
 

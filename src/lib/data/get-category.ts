@@ -1,7 +1,7 @@
 'use server';
 
 import { connectToDb } from '../connect';
-import { CategoryDto } from '../dtos/category-dto';
+import { CategoryDto } from '../dtos';
 import { CategoryModel } from '../models';
 import { unstable_noStore as noStore } from 'next/cache';
 

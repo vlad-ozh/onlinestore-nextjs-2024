@@ -1,10 +1,8 @@
 {
   "Breadcrumbs": {
     "home": "Інтернет магазин",
-    "login": "Вхід",
-    "register": "Реєстрація",
-    "forgotPassword": "Забули пароль",
-    "resetPassword": "Відновлення паролю",
+    "signUp": "Зареєструватися",
+    "signIn": "Увійти",
     "profile": "Профіль",
     "profileInfo": "Особиста інформація",
     "products": "Каталог",
@@ -41,5 +39,10 @@
     "noCategory": "Категорію не знайдено",
     "noCategories": "Категорій не знайдено",
     "goHome": "До головної"
+  },
+  "Card": {
+    "rating": "Оцінка",
+    "buy": "Купити",
+  	"inCart": "У кошику"
   }
 }

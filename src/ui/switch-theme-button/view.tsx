@@ -5,9 +5,7 @@ import { useTheme } from 'next-themes';
 import { SunIcon, MoonIcon } from '@heroicons/react/24/outline';
 
 import styles from './styles.module.scss';
-
-const darkThemeName = 'dark';
-const lightThemeName = 'light';
+import { darkThemeName, lightThemeName } from '@/utils/theme-names';
 
 export const SwitchThemeButton: React.FC = () => {
   const { setTheme, resolvedTheme } = useTheme();
