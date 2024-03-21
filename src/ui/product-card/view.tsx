@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { inCartProduct, isFavoriteProduct } from '@/lib/data';
 import { currentUser } from '@clerk/nextjs';
 import { getTranslations } from 'next-intl/server';
+import { IReviewWithId } from '@/types/products-types';
 
 import styles from './styles.module.scss';
 
@@ -15,7 +16,7 @@ interface IProps {
   productId: string;
   toProduct: string;
   amount: boolean;
-  rating: number;
+  reviews: IReviewWithId[];
 };
 
 export const ProductCard: React.FC<IProps> = async (props) => {
@@ -27,12 +28,30 @@ export const ProductCard: React.FC<IProps> = async (props) => {
     toProduct,
     productId,
     amount,
-    rating,
+    reviews,
   } = props;
 
   const user = await currentUser();
   const isFavorite = await isFavoriteProduct(productId);
   const inCart = await inCartProduct(productId);
+
+  const totalRating = (reviews: IReviewWithId[]) => {
+    if (reviews.length > 1) {
+      let sum = 0;
+
+      reviews.forEach(review => sum += review.rating);
+
+      const rating = Math.round((sum / reviews.length) * 10) / 10 ;
+
+      return rating;
+    } else if (reviews.length === 1) {
+      return reviews[0].rating;
+    }
+
+    return 0;
+  };
+
+  const rating = totalRating(reviews);
 
   return (
     <div className={styles.card}>
@@ -40,11 +59,13 @@ export const ProductCard: React.FC<IProps> = async (props) => {
         <div className={styles.cardImageContainer}>
           <Image
             src={image}
-            width={200}
-            height={174}
+            width={0}
+            height={0}
+            sizes={'100vw'}
             alt={name}
             className={styles.cardImage}
-            priority={true}
+            priority
+            unoptimized
           />
         </div>
       </Link>

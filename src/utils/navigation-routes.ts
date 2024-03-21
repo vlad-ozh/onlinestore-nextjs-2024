@@ -22,6 +22,7 @@
 export const routes = {
   toHome: () => '/',
   toSignIn: () => '/sign-in',
+  toAccount: () => '/account',
   toCart: () => '/account/cart',
   toFavorites: () => '/account/favorites',
   toCategories: () => '/products',

@@ -93,3 +93,17 @@ export interface IProduct {
   reviews: IReviewForModel[];
   characteristics: ICharacteristics;
 }
+
+export interface IClientProduct {
+  id: string;
+  name: string;
+  brand: string;
+  category: string;
+  price: number;
+  description: string;
+  image: string[];
+  salesCount: number;
+  amount: number;
+  reviews: IReviewWithId[];
+  characteristics: ICharacteristics;
+}
