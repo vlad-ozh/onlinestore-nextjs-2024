@@ -43,5 +43,10 @@
     "rating": "Rating",
     "buy": "To buy",
 	  "inCart": "In the cart"
+  },
+  "Errors": {
+    "notFound": "Not found data!",
+    "unauth": "The user is not authorized!",
+    "unexpected": "Unexpected error!"
   }
 }

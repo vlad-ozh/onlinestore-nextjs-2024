@@ -8,4 +8,4 @@ export { NoData } from './no-data';
 export { LinkAnimated } from './link-animated';
 export { ProductCard } from './product-card';
 export { BuyButton } from './buy-button';
-export { SelectButton } from './select-button';
+export { FavoriteButton } from './favorite-button';

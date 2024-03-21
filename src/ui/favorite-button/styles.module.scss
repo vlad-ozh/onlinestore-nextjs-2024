@@ -1,0 +1,25 @@
+.favorite {
+  background-color: transparent;
+  border: none;
+  transition: all .2s;
+  cursor: pointer;
+  padding: 8px;
+
+  &:hover {
+    color: var(--accent-color);
+  }
+  
+  &Link {
+    display: flex;
+    padding: 8px;
+    transition: all .3s;
+  
+    &:hover {
+      color: var(--accent-color);
+    }
+  }
+}
+
+.isFavorite {
+  color: var(--accent-color);
+}

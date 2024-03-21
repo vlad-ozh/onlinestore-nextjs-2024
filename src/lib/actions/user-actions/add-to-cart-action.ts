@@ -1,17 +1,17 @@
 'use server';
 
-import { getTranslations } from 'next-intl/server';
-import { action } from './../safe-action';
 import { clerkClient, currentUser } from '@clerk/nextjs';
 import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
+import { action } from '../safe-action';
+import { getTranslations } from 'next-intl/server';
 import { ApiError, returnError } from '@/lib/api-error';
 
 const schema = z.object({
   productId: z.string(),
 });
 
-export const addProductToFavorites = action(schema, async ({ productId }) => {
+export const addProductToCart = action(schema, async ({ productId }) => {
   const t = await getTranslations('Errors');
 
   try {
@@ -19,13 +19,13 @@ export const addProductToFavorites = action(schema, async ({ productId }) => {
 
     if (!user) throw ApiError.UnauthorizedError(t('unauth'));
 
-    const favorites: any = user?.privateMetadata.favorites;
+    const cartProducts: any = user?.privateMetadata.cart;
 
-    if (favorites.some((product: string) => product === productId)) return;
+    if (cartProducts.some((product: string) => product === productId)) return;
 
     await clerkClient.users.updateUserMetadata(user.id, {
       privateMetadata: {
-        favorites: !favorites ? [productId] : favorites.concat(productId),
+        cart: !cartProducts ? [productId] : cartProducts.concat(productId),
       },
     });
   } catch (error) {

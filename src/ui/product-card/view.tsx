@@ -1,48 +1,51 @@
 import React from 'react';
-import { BuyButton, SelectButton } from '../';
+import { BuyButton, FavoriteButton } from '../';
 import Link from 'next/link';
 import Image from 'next/image';
+import { inCartProduct, isFavoriteProduct } from '@/lib/data';
+import { currentUser } from '@clerk/nextjs';
+import { getTranslations } from 'next-intl/server';
 
 import styles from './styles.module.scss';
-import { useTranslations } from 'next-intl';
 
 interface IProps {
   name: string;
   image: string;
   price: string;
+  productId: string;
   toProduct: string;
-  // onSelect: () => void;
-  // onRemoveSelected: () => void;
-  // isSelect: boolean;
-  // onCart: () => void;
-  // isCart: boolean;
-  // isUser: boolean;
   amount: boolean;
   rating: number;
 };
 
-export const ProductCard: React.FC<IProps> = (props) => {
-  const t = useTranslations();
+export const ProductCard: React.FC<IProps> = async (props) => {
+  const t = await getTranslations();
   const {
     name,
     image,
     price,
     toProduct,
-    // onSelect,
-    // onRemoveSelected,
-    // isSelect,
-    // onCart,
-    // isCart,
-    // isUser,
+    productId,
     amount,
     rating,
   } = props;
+
+  const user = await currentUser();
+  const isFavorite = await isFavoriteProduct(productId);
+  const inCart = await inCartProduct(productId);
 
   return (
     <div className={styles.card}>
       <Link href={toProduct} className={styles.cardLink}>
         <div className={styles.cardImageContainer}>
-          <Image className={styles.cardImage} src={image} alt={name} width={100} height={174} />
+          <Image
+            src={image}
+            width={200}
+            height={174}
+            alt={name}
+            className={styles.cardImage}
+            priority={true}
+          />
         </div>
       </Link>
       <div className={styles.cardInfo}>
@@ -52,25 +55,23 @@ export const ProductCard: React.FC<IProps> = (props) => {
           </Link>
         </h4>
         <div className={styles.cardMain}>
-          {t('Card.rating')}: {rating}
-          adsdsd
-          {/* <SelectButton
-            onSelect={onSelect}
-            onRemoveSelected={onRemoveSelected}
-            isSelect={isSelect}
-            isUser={isUser}
-          /> */}
+          {t('Card.rating')}: {rating ? rating : '-'}
+
+          <FavoriteButton
+            productId={productId}
+            isFavorite={Boolean(isFavorite)}
+            isUser={Boolean(user)}
+          />
         </div>
         <div className={styles.cardBuy}>
           <h4>{price} ₴</h4>
-          sdsdsd
-          {/* <BuyButton
+
+          <BuyButton
+            productId={productId}
             amount={amount}
-            isCart={isCart}
-            isUser={isUser}
-            onCart={onCart}
-            withText={false}
-          /> */}
+            inCart={Boolean(inCart)}
+            isUser={Boolean(user)}
+          />
         </div>
       </div>
     </div>

@@ -1,2 +1,6 @@
 export { searchProducts } from './products-actions';
-export { addProductToFavorites } from './user-actions';
+export {
+  addProductToFavorites,
+  deleteProductFromFavorites,
+  addProductToCart,
+} from './user-actions';

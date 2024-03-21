@@ -1,59 +1,66 @@
+'use client';
+
 import React from 'react';
-import {
-  ShoppingCartIcon,
-  CheckCircleIcon,
-} from '@heroicons/react/24/outline';
+import { ShoppingCartIcon, CheckIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import Link from 'next/link';
-import { useTranslations } from 'next-intl';
 import { routes } from '@/utils/navigation-routes';
+import { addProductToCart } from '@/lib/actions';
+import { useAction } from 'next-safe-action/hooks';
 
-import style from './style.module.scss';
+import styles from './styles.module.scss';
 
 interface IProps {
-  onCart: () => void;
-  isCart: boolean;
+  productId: string;
+  inCart: boolean;
   isUser: boolean;
   amount: boolean;
-  withText: boolean;
+  withText?: {
+    buyText: string;
+    inCartText: string;
+  };
 }
 
 export const BuyButton: React.FC<IProps> = ({
-  onCart,
-  isCart,
+  productId,
+  inCart,
   isUser,
   amount,
   withText,
 }) => {
-  const t = useTranslations('Card');
+  const { execute, status } = useAction(addProductToCart);
 
   return (
     <>
-      {!isCart && isUser && (<button
-        onClick={onCart}
-        disabled={!amount}
-        className={clsx(style.cart, {
-          [style.cartNoActive]: !amount,
-        })}
-      >
-        <ShoppingCartIcon /> {withText && t('buy')}
-      </button>)}
-
-      {isCart && (<Link
-        href={routes.toCart()}
-        className={style.cartLink}
-      >
-        <CheckCircleIcon /> {withText && t('inCart')}
-      </Link>)}
-
-      {!isUser && (<Link
-        href={routes.toSignIn()}
-        className={clsx(style.cartLink, {
-          [style.cartNoActive]: !amount,
-        })}
-      >
-        <ShoppingCartIcon /> {withText && t('buy')}
-      </Link>)}
+      {isUser ? (
+        !inCart ? (
+          <button
+            onClick={async () => execute({productId})}
+            disabled={!amount || status === 'executing'}
+            className={clsx(styles.cart, {
+              [styles.cartNoActive]: !amount,
+            })}
+          >
+            <ShoppingCartIcon width={24} /> {withText && withText.buyText}
+          </button>
+        ) : (
+          <Link
+            href={routes.toCart()}
+            className={styles.cartLink}
+          >
+            <CheckIcon width={24} /> {withText && withText.inCartText}
+          </Link>
+        )
+      ) : (
+        <Link
+          href={routes.toSignIn()}
+          className={clsx(styles.cartLink, {
+            [styles.cartNoActive]: !amount,
+          })}
+        >
+          <ShoppingCartIcon width={24} /> {withText && withText.buyText}
+        </Link>
+      )}
     </>
   );
 };
