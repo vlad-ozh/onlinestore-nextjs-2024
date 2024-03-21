@@ -1,6 +1,7 @@
+import { IClientProduct } from '@/types/products-types';
 import { IProductDocument } from '../models/product-model';
 
-export const ProductDto = (model: IProductDocument) => {
+export const ProductDto = (model: IProductDocument): IClientProduct => {
   const reviews = model.reviews.map(review => ({
     id: review._id,
     userId: review.userId,

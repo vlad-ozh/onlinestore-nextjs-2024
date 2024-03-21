@@ -5,12 +5,9 @@
   box-shadow: var(--box-shadow);
   text-align: center;
   transition: all .3s;
-  min-height: 385px;
-  height: 100%;
-  max-width: 400px;
 
   &:hover {
-    transform: scale(1.015);
+    transform: scale(1.01);
     box-shadow: var(--box-shadow-hover);
   }
 
@@ -18,7 +15,6 @@
     display: flex;
     align-items: center;
     padding: 15px;
-    min-height: auto;
   }
 
   &Info {
@@ -29,34 +25,36 @@
   }
 
   &Link {
-    color: var(--text-color);
+    display: flex;
+    justify-content: center;
   }
 
   &Title {
     margin-bottom: 5px;
     font-size: 14px;
-    height: 36px;
+    height: 50px;
   }
 
   &ImageContainer {
     display: flex;
-    align-items: center;
     justify-content: center;
-    height: 220px;
+    align-items: center;
+    height: 230px;
+    margin-bottom: 10px;
 
     @media screen and (max-width: 500px) {
-      height: auto;
+      height: 130px;
+      margin-bottom: 0;
     }
   }
 
   &Image {
-    // max-width: 210px;
-    // width: 100%;
-    margin-bottom: 10px;
-
+    height: auto;
+    max-width: 210px;
+    width: 100%;
+    
     @media screen and (max-width: 500px) {
-      max-width: 130px;
-      margin-bottom: 0;
+      width: 110px;
     }
   }
 

@@ -28,7 +28,15 @@ const SwitchLanguageButton = dynamic(
   { ssr: false, loading: () => <LoaderHeaderButton /> }
 );
 
-export const HeaderContent: React.FC = () => {
+interface IProps {
+  user: boolean;
+  totalFavorites: number | undefined;
+}
+
+export const HeaderContent: React.FC<IProps> = ({
+  user,
+  totalFavorites,
+}) => {
   const t = useTranslations('Header');
 
   const [ navMobile, setNavMobile ] = React.useState<boolean>(false);
@@ -81,10 +89,15 @@ export const HeaderContent: React.FC = () => {
             {t('products')}
           </Link>
           <Link
-            href={toFavorites()}
+            href={user ? toFavorites() : toSignIn()}
             onClick={() => setNavMobile(false)}
             className={styles.navMobileSelected}
           >
+            <span className={clsx(styles.counter, {
+              [styles.noCount]: !totalFavorites,
+            })}>
+              {totalFavorites}
+            </span>
             <HeartIcon width={24} />
             {t('selected')}
           </Link>
@@ -143,15 +156,20 @@ export const HeaderContent: React.FC = () => {
           </li>
           <li className={styles.navListItem}>
             <Link
-              href={toFavorites()}
+              href={user ? toFavorites() : toSignIn()}
               className={styles.navListItemLink}
             >
+              <span className={clsx(styles.counter, {
+                [styles.noCount]: !totalFavorites,
+              })}>
+                {totalFavorites}
+              </span>
               <HeartIcon width={24} />
             </Link>
           </li>
           <li className={styles.navListItem}>
             <Link
-              href={toCart()}
+              href={user ? toCart() : toSignIn()}
               className={styles.navListItemLink}
             >
               <ShoppingCartIcon width={24} />

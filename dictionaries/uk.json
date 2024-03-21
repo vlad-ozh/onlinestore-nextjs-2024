@@ -7,7 +7,7 @@
     "profileInfo": "Особиста інформація",
     "products": "Каталог",
     "search": "Результати пошуку для {search}",
-    "selected": "Обране",
+    "favorites": "Обране",
     "cart": "Кошик",
     "orders": "Мої замовлення",
     "smartphones": "Смартфони",
@@ -38,6 +38,7 @@
   "NoData": {
     "noCategory": "Категорію не знайдено",
     "noCategories": "Категорій не знайдено",
+    "noFavoriteProducts": "Немає обраних товарів",
     "goHome": "До головної"
   },
   "Card": {

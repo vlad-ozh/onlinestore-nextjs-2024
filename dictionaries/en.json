@@ -7,7 +7,7 @@
     "profileInfo": "Personal information",
     "products": "Products",
     "search": "Search results for {search}",
-    "selected": "Selected",
+    "favorites": "Favorites",
     "cart": "Cart",
     "orders": "My orders",
     "smartphones": "Smartphones",
@@ -37,6 +37,7 @@
   "NoData": {
     "noCategory": "Category not found",
     "noCategories": "Categories not found",
+    "noFavoriteProducts": "There are no favorite products",
     "goHome": "Go home"
   },
   "Card": {
