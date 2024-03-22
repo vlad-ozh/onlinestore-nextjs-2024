@@ -9,7 +9,7 @@ interface IProps {
   products: IClientProduct[];
 }
 
-export const ShowFavoriteProducts: React.FC<IProps> = async ({ products }) => {
+export const ShowProducts: React.FC<IProps> = async ({ products }) => {
 
   return (
     <ul className={styles.productsList}>

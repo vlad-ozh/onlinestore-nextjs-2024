@@ -1,4 +1,5 @@
 @import'./variables.scss';
+@import'rc-pagination/assets/index.css';
 
 * {
   box-sizing: border-box;
@@ -19,4 +20,26 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.rc-pagination-simple .rc-pagination-simple-pager input {
+  background-color: var(--input-background-color);
+  color: var(--text-color);
+  border-radius: 6px;
+
+  &:hover {
+    border-color: var(--accent-color);
+  }
+}
+.rc-pagination-next, .rc-pagination-prev {
+  border-radius: 6px;
+
+  &:hover {
+    box-shadow: var(--box-shadow-hover);
+  }
+}
+.rc-pagination-item-link::after {
+  color: var(--text-color);
+  border-radius: 6px;
+  box-shadow: var(--box-shadow);
 }

@@ -1,1 +1,0 @@
-export { ShowFavoriteProducts } from './view';

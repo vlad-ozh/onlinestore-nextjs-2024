@@ -1,4 +1,4 @@
-import { Breadcrumbs, ShowFavoriteProducts } from '@/components';
+import { Breadcrumbs, ShowProducts } from '@/components';
 import { getTranslations } from 'next-intl/server';
 import { getFavoriteProducts } from '@/lib/data';
 import { routes } from '@/utils/navigation-routes';
@@ -26,7 +26,7 @@ export default async function FavoritesPage() {
       ]}/>
 
       {favoriteProducts?.length ? (
-        <ShowFavoriteProducts products={favoriteProducts}/>
+        <ShowProducts products={favoriteProducts}/>
       ) : (
         <NoData
           text={t('NoData.noFavoriteProducts')}

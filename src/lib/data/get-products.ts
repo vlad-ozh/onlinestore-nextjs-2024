@@ -2,13 +2,14 @@
 
 import { connectToDb } from '../connect';
 import { ProductDto } from '../dtos';
-import { ProductModel } from '../models';
+import { CategoryModel, ProductModel } from '../models';
 import { unstable_noStore as noStore } from 'next/cache';
 import { categoryModelName } from '../models/model-names';
 import { getTranslations } from 'next-intl/server';
 import { ApiError } from '../api-error';
+import { IClientProduct } from '@/types/products-types';
 
-export const getProducts = async () => {
+export const getProducts = async (category: string, brand: string) => {
   noStore();
 
   try {
@@ -16,7 +17,21 @@ export const getProducts = async () => {
 
     connectToDb();
 
-    const products = await ProductModel.find().populate({
+    const isCategory = await CategoryModel.findOne({ name: category });
+
+    if (!isCategory) throw ApiError.NotFound(t('notFound'));
+
+    let settingsFindProducts = {};
+
+    if (brand === 'all') {
+      settingsFindProducts = { category: isCategory };
+    } else {
+      settingsFindProducts = { category: isCategory, brand };
+    }
+
+    const products = await ProductModel.find(
+      settingsFindProducts
+    ).populate({
       path: 'category',
       select: 'name',
       model: categoryModelName,
@@ -24,7 +39,8 @@ export const getProducts = async () => {
 
     if (!products) throw ApiError.NotFound(t('notFound'));
 
-    const productsDto = products.map(product => ProductDto(product));
+    const productsDto: IClientProduct[] =
+      products.map(product => ProductDto(product));
 
     return productsDto;
   } catch (error: any) {
