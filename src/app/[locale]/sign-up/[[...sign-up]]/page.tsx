@@ -15,7 +15,10 @@ export default function SignUpPage() {
         { name: t('signUp'), path: '' },
       ]}/>
       <div className={styles.mainForm}>
-        <SignUp />
+        <SignUp
+          afterSignUpUrl={routes.toAccount()}
+          afterSignInUrl={routes.toAccount()}
+        />
       </div>
     </main>
   );

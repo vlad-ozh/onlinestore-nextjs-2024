@@ -1,10 +1,9 @@
 import { Breadcrumbs, ShowHomeCategories } from '@/components';
 import { getTranslations } from 'next-intl/server';
-import { UserButton } from '@clerk/nextjs';
 
 import styles from './styles.module.scss';
 
-export default async function Home() {
+export default async function HomePage() {
   const t = await getTranslations('Breadcrumbs');
 
   return (
@@ -13,7 +12,6 @@ export default async function Home() {
         { name: t('home'), path: '' },
       ]}/>
       <ShowHomeCategories />
-      <UserButton />
     </main>
   );
 }
