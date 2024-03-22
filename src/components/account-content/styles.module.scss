@@ -1,0 +1,64 @@
+.account {
+  &Title {
+    margin-bottom: 20px;
+    
+    @media screen and (max-width: 600px) {
+      font-size: 18px;
+    }
+  }
+
+  &Box {
+    width: 100%;
+    background-color: var(--box-background);
+    padding: 20px;
+    box-shadow: var(--box-shadow);
+    border-radius: 12px;
+
+    @media screen and (max-width: 600px) {
+      padding: 10px;
+    }
+  }
+
+  &List {
+    list-style: none;
+  }
+
+  &ListItem {
+    & + & {
+      margin-top: 10px;
+    }
+
+    &:last-child {
+      border-top: 1px solid #c1c1c1;
+      padding-top: 15px;
+      min-height: 54px;
+    }
+  }
+  
+  &ListItemButton,
+  &ListItemLink {
+    display: flex;
+    gap: 15px;
+    background-color: transparent;
+    align-items: center;
+    padding: 10px 20px;
+    width: 100%;
+    border-radius: 6px;
+    transition: all .2s;
+    color: var(--text-color);
+
+    @media screen and (max-width: 600px) {
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    &:hover {
+      background-color: var(--hover-color);
+    }
+  }
+
+  &ListItemButton {
+    cursor: pointer;
+    border: 1px solid var(--accent-color);
+  }
+}

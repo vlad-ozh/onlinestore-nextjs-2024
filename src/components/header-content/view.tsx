@@ -47,6 +47,7 @@ export const HeaderContent: React.FC<IProps> = ({
     toSignIn,
     toFavorites,
     toCart,
+    toAccount,
   } = routes;
 
   return (
@@ -73,7 +74,7 @@ export const HeaderContent: React.FC<IProps> = ({
             </div>
           </div>
           <Link
-            href={toSignIn()}
+            href={user ? toAccount() : toSignIn()}
             onClick={() => setNavMobile(false)}
             className={styles.navMobileProfile}
           >
@@ -142,7 +143,7 @@ export const HeaderContent: React.FC<IProps> = ({
         <ul className={styles.navList}>
           <li className={styles.navListItem}>
             <Link
-              href={toSignIn()}
+              href={user ? toAccount() : toSignIn()}
               className={styles.navListItemLink}
             >
               <UserIcon width={24} />

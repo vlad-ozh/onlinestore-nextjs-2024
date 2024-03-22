@@ -50,5 +50,11 @@
     "notFound": "Not found data!",
     "unauth": "The user is not authorized!",
     "unexpected": "Unexpected error!"
+  },
+  "Account": {
+    "greetings": "Hello, {name}!",
+    "personalInfo": "Personal information",
+    "logout": "Log out of the account",
+    "user": "User"
   }
 }
