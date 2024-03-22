@@ -17,6 +17,8 @@ export const isFavoriteProduct = async (productId: string) => {
 
     const favorites: any = user?.privateMetadata.favorites;
 
+    if (!favorites) return false;
+
     const isFavorite: boolean = favorites.some(
       (product: string) => product === productId
     );

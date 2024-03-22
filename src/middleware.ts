@@ -19,6 +19,7 @@ export default authMiddleware({
     '/:locale/sign-in',
     '/:locale/products',
     '/:locale/products/:category',
+    '/:locale/products/:category/:brand',
     '/:locale/account/favorites',
   ],
 });

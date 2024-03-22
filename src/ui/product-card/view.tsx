@@ -3,13 +3,13 @@ import { BuyButton, FavoriteButton } from '../';
 import Link from 'next/link';
 import Image from 'next/image';
 import { inCartProduct, isFavoriteProduct } from '@/lib/data';
-import { currentUser } from '@clerk/nextjs';
 import { getTranslations } from 'next-intl/server';
 import { IReviewWithId } from '@/types/products-types';
 
 import styles from './styles.module.scss';
 
 interface IProps {
+  isUser: boolean;
   name: string;
   image: string;
   price: string;
@@ -22,6 +22,7 @@ interface IProps {
 export const ProductCard: React.FC<IProps> = async (props) => {
   const t = await getTranslations();
   const {
+    isUser,
     name,
     image,
     price,
@@ -31,7 +32,6 @@ export const ProductCard: React.FC<IProps> = async (props) => {
     reviews,
   } = props;
 
-  const user = await currentUser();
   const isFavorite = await isFavoriteProduct(productId);
   const inCart = await inCartProduct(productId);
 
@@ -65,7 +65,6 @@ export const ProductCard: React.FC<IProps> = async (props) => {
             alt={name}
             className={styles.cardImage}
             priority
-            unoptimized
           />
         </div>
       </Link>
@@ -81,7 +80,7 @@ export const ProductCard: React.FC<IProps> = async (props) => {
           <FavoriteButton
             productId={productId}
             isFavorite={Boolean(isFavorite)}
-            isUser={Boolean(user)}
+            isUser={isUser}
           />
         </div>
         <div className={styles.cardBuy}>
@@ -91,7 +90,7 @@ export const ProductCard: React.FC<IProps> = async (props) => {
             productId={productId}
             amount={amount}
             inCart={Boolean(inCart)}
-            isUser={Boolean(user)}
+            isUser={isUser}
           />
         </div>
       </div>

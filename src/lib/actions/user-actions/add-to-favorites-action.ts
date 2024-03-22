@@ -21,11 +21,21 @@ export const addProductToFavorites = action(schema, async ({ productId }) => {
 
     const favorites: any = user?.privateMetadata.favorites;
 
+    if (!favorites) {
+      await clerkClient.users.updateUserMetadata(user.id, {
+        privateMetadata: {
+          favorites: [productId],
+        },
+      });
+
+      return revalidatePath('/');
+    };
+
     if (favorites.some((product: string) => product === productId)) return;
 
     await clerkClient.users.updateUserMetadata(user.id, {
       privateMetadata: {
-        favorites: !favorites ? [productId] : favorites.concat(productId),
+        favorites: favorites.concat(productId),
       },
     });
   } catch (error) {

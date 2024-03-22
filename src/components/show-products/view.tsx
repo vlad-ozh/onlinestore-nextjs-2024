@@ -2,6 +2,7 @@ import React from 'react';
 import { routes } from '@/utils/navigation-routes';
 import { IClientProduct } from '@/types/products-types';
 import { ProductCard } from '@/ui';
+import { currentUser } from '@clerk/nextjs';
 
 import styles from './styles.module.scss';
 
@@ -10,6 +11,7 @@ interface IProps {
 }
 
 export const ShowProducts: React.FC<IProps> = async ({ products }) => {
+  const user = await currentUser();
 
   return (
     <ul className={styles.productsList}>
@@ -28,6 +30,7 @@ export const ShowProducts: React.FC<IProps> = async ({ products }) => {
         return (
           <li key={productId.toString()}>
             <ProductCard
+              isUser={Boolean(user)}
               name={name}
               productId={productId.toString()}
               image={image[0]}

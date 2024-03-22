@@ -17,6 +17,8 @@ export const inCartProduct = async (productId: string) => {
 
     const cartProducts: any = user?.privateMetadata.cart;
 
+    if (!cartProducts) return false;
+
     const inCart: boolean = cartProducts.some(
       (product: string) => product === productId
     );

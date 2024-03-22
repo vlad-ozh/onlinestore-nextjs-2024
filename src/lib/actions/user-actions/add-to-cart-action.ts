@@ -21,11 +21,21 @@ export const addProductToCart = action(schema, async ({ productId }) => {
 
     const cartProducts: any = user?.privateMetadata.cart;
 
+    if (!cartProducts) {
+      await clerkClient.users.updateUserMetadata(user.id, {
+        privateMetadata: {
+          cart: [productId],
+        },
+      });
+
+      return revalidatePath('/');
+    };
+
     if (cartProducts.some((product: string) => product === productId)) return;
 
     await clerkClient.users.updateUserMetadata(user.id, {
       privateMetadata: {
-        cart: !cartProducts ? [productId] : cartProducts.concat(productId),
+        cart: cartProducts.concat(productId),
       },
     });
   } catch (error) {
