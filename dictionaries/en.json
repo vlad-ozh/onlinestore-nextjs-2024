@@ -38,6 +38,7 @@
     "noCategory": "Category not found",
     "noCategories": "Categories not found",
     "noFavoriteProducts": "There are no favorite products",
+    "noProducts": "There are no products",
     "goHome": "Go home"
   },
   "Card": {

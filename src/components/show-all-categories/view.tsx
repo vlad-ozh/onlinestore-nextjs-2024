@@ -35,7 +35,7 @@ export const ShowAllCategories: React.FC = async () => {
                 return (
                   <li key={index} className={styles.categoryBrandsItem}>
                     <LinkAnimated
-                      href={''}
+                      href={routes.toProducts(category.name, brand)}
                     >
                       {brand}
                     </LinkAnimated>
@@ -44,7 +44,7 @@ export const ShowAllCategories: React.FC = async () => {
               })}
               <li className={styles.categoryBrandsItem}>
                 <LinkAnimated
-                  href={''}
+                  href={routes.toProducts(category.name, 'all')}
                 >
                   {t('Category.all')}
                 </LinkAnimated>

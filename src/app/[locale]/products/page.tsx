@@ -6,7 +6,7 @@ import { ShowCategorySkeleton } from '@/skeletons';
 
 import styles from './styles.module.scss';
 
-export default function Products() {
+export default function AllCategoriesPage() {
   const t = useTranslations('Breadcrumbs');
 
   return (
