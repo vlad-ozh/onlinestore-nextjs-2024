@@ -36,7 +36,13 @@ export const ProductsPagination: React.FC<IProps> = ({ totalProducts }) => {
     const params = new URLSearchParams(searchParams);
     params.set('page', page.toString());
 
-    return router.push(`${pathname}?${params.toString()}`, { scroll: true });
+    router.push(`${pathname}?${params.toString()}`);
+    router.refresh();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+
   };
 
   return (

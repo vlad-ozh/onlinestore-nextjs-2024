@@ -1,5 +1,7 @@
 @import'./variables.scss';
 @import'rc-pagination/assets/index.css';
+@import'slick-carousel/slick/slick.css';
+@import'slick-carousel/slick/slick-theme.css';
 
 * {
   box-sizing: border-box;
@@ -31,15 +33,25 @@ a {
     border-color: var(--accent-color);
   }
 }
-.rc-pagination-next, .rc-pagination-prev {
+
+.rc-pagination-next,
+.rc-pagination-prev {
   border-radius: 6px;
 
   &:hover {
     box-shadow: var(--box-shadow-hover);
   }
 }
+
 .rc-pagination-item-link::after {
   color: var(--text-color);
   border-radius: 6px;
   box-shadow: var(--box-shadow);
+}
+
+.slick-dots li.slick-active button:before{
+  color: var(--text-color);
+}
+.slick-dots li button:before{
+  color: var(--text-color);
 }

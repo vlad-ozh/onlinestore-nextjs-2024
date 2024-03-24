@@ -28,15 +28,15 @@ export const ShowProducts: React.FC<IProps> = async ({ products }) => {
         } = product;
 
         return (
-          <li key={productId.toString()}>
+          <li key={productId}>
             <ProductCard
               isUser={Boolean(user)}
               name={name}
-              productId={productId.toString()}
+              productId={productId}
               image={image[0]}
               price={price.toLocaleString()}
               toProduct={
-                routes.toProduct(category, brand, productId.toString())
+                routes.toProduct(category, brand, productId)
               }
               amount={Boolean(amount)}
               reviews={reviews}

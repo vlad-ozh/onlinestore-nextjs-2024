@@ -22,6 +22,7 @@ export default authMiddleware({
     '/:locale/products',
     '/:locale/products/:category',
     '/:locale/products/:category/:brand',
+    '/:locale/products/:category/:brand/:productId',
     '/:locale/account/favorites',
   ],
 });

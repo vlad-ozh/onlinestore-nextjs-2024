@@ -38,7 +38,7 @@ export interface ICharacteristics {
   camera?: {
     camera?: string;
     videoRecording?: string;
-    opticalStabilization?: string;
+    opticalStabilization?: 'yes' | 'no';
     frontCamera?: string;
   };
   os?: string;
@@ -100,7 +100,10 @@ export interface IClientProduct {
   brand: string;
   category: string;
   price: number;
-  description: string;
+  description:
+    'iphone-14-pro-max-description' |
+    'ipad-air-description' |
+    'macbook-pro-16-description';
   image: string[];
   salesCount: number;
   amount: number;

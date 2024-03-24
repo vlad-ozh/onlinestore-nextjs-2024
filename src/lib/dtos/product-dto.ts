@@ -12,7 +12,7 @@ export const ProductDto = (model: IProductDocument): IClientProduct => {
   }));
 
   return {
-    id: model._id,
+    id: model._id.toString(),
     name: model.name,
     brand: model.brand,
     category: model.category.name,

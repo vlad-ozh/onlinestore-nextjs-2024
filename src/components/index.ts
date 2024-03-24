@@ -6,6 +6,9 @@ export { ShowAllCategories } from './show-all-categories';
 export { ShowProducts } from './show-products';
 export { Breadcrumbs } from './breadcrumbs';
 export { ProductsPagination } from './pagination';
+export { ProductMain } from './product-main';
+export { ProductSpecs } from './product-specs';
+export { ProductSlider } from './product-slider';
 export {
   SearchForm,
 } from './forms';

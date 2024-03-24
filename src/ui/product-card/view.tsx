@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { inCartProduct, isFavoriteProduct } from '@/lib/data';
 import { getTranslations } from 'next-intl/server';
 import { IReviewWithId } from '@/types/products-types';
+import { totalRating } from '@/utils/totalRating';
 
 import styles from './styles.module.scss';
 
@@ -35,22 +36,6 @@ export const ProductCard: React.FC<IProps> = async (props) => {
   const isFavorite = await isFavoriteProduct(productId);
   const inCart = await inCartProduct(productId);
 
-  const totalRating = (reviews: IReviewWithId[]) => {
-    if (reviews.length > 1) {
-      let sum = 0;
-
-      reviews.forEach(review => sum += review.rating);
-
-      const rating = Math.round((sum / reviews.length) * 10) / 10 ;
-
-      return rating;
-    } else if (reviews.length === 1) {
-      return reviews[0].rating;
-    }
-
-    return 0;
-  };
-
   const rating = totalRating(reviews);
 
   return (
@@ -63,8 +48,8 @@ export const ProductCard: React.FC<IProps> = async (props) => {
             height={0}
             sizes={'100vw'}
             alt={name}
-            className={styles.cardImage}
             priority
+            className={styles.cardImage}
           />
         </div>
       </Link>
