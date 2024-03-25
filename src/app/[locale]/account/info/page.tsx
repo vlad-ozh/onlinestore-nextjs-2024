@@ -3,8 +3,17 @@ import { getTranslations } from 'next-intl/server';
 import { routes } from '@/utils/navigation-routes';
 import { UserProfile, currentUser } from '@clerk/nextjs';
 import { redirect } from 'next/navigation';
+import { Metadata } from 'next';
 
 import styles from './styles.module.scss';
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations('Breadcrumbs');
+
+  return {
+    title: t('profileInfo'),
+  };
+}
 
 export default async function AccountInfoPage() {
   const user = await currentUser();

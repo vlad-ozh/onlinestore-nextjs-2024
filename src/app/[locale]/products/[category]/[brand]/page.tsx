@@ -4,8 +4,19 @@ import { getProducts } from '@/lib/data';
 import { routes } from '@/utils/navigation-routes';
 import { TCategoriesList } from '@/types/products-types';
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 
 import styles from './styles.module.scss';
+
+export async function generateMetadata(
+  { params }: {params: { brand: string, }}
+): Promise<Metadata> {
+  const t = await getTranslations('Breadcrumbs');
+
+  return {
+    title: params.brand === 'all' ? t('all') : params.brand,
+  };
+}
 
 export default async function ProductsPage({ params, searchParams }: {
   params: {
