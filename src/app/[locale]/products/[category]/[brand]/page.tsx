@@ -16,11 +16,12 @@ export default async function ProductsPage({ params, searchParams }: {
     page?: string;
   };
 }) {
-  const t = await getTranslations('Breadcrumbs');
 
   const products = await getProducts(params.category, params.brand);
 
   if (!products?.length) notFound();
+
+  const t = await getTranslations('Breadcrumbs');
 
   const currentPage = Number(searchParams?.page) || 1;
 
@@ -38,7 +39,7 @@ export default async function ProductsPage({ params, searchParams }: {
         { name: t('home'), path: routes.toHome() },
         { name: t('products'), path: routes.toCategories() },
         { name: t(params.category), path: routes.toCategory(params.category) },
-        { name: params.brand, path: '' },
+        { name: params.brand === 'all' ? t('all') : params.brand, path: '' },
       ]}/>
 
       <ShowProducts products={productsOnOnePage()}/>

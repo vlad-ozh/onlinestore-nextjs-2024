@@ -1,0 +1,1 @@
+export { RatingSelect } from './view';

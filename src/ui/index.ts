@@ -9,3 +9,7 @@ export { LinkAnimated } from './link-animated';
 export { ProductCard } from './product-card';
 export { BuyButton } from './buy-button';
 export { FavoriteButton } from './favorite-button';
+export { Textarea } from './textarea';
+export { Submit } from './submit';
+export { RatingSelect } from './rating-select';
+export { ShowError } from './show-error';

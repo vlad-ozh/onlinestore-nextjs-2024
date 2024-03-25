@@ -13,6 +13,6 @@ export const routes = {
   toCategory: ( category: string ) => `/products/${category}`,
   toProducts: ( category: string, brand: string ) =>
     `/products/${category}/${brand}`,
-  toProduct: ( category: string, brand: string, id: string ) =>
-    `/products/${category}/${brand}/${id}`,
+  toProduct: ( category: string, brand: string, productId: string ) =>
+    `/products/${category}/${brand}/${productId}`,
 };

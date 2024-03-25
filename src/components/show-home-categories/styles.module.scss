@@ -36,14 +36,11 @@
     border-radius: 8px;
     box-shadow: var(--box-shadow);
     transition: all .3s;
+    gap: 10px;
 
     &:hover {
       box-shadow: var(--box-shadow-hover);
       background-color: var(--hover-color);
-    }
-
-    & svg {
-      margin-bottom: 10px;
     }
   }
 }
