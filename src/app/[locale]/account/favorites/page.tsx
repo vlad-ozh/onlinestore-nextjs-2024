@@ -5,8 +5,17 @@ import { routes } from '@/utils/navigation-routes';
 import { NoData } from '@/ui';
 import { currentUser } from '@clerk/nextjs';
 import { redirect } from 'next/navigation';
+import { Metadata } from 'next';
 
 import styles from './styles.module.scss';
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations('Breadcrumbs');
+
+  return {
+    title: t('favorites'),
+  };
+}
 
 export default async function FavoritesPage() {
   const user = await currentUser();

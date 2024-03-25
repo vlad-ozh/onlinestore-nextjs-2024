@@ -10,8 +10,19 @@ import { routes } from '@/utils/navigation-routes';
 import { TCategoriesList } from '@/types/products-types';
 import { notFound } from 'next/navigation';
 import { currentUser } from '@clerk/nextjs';
+import { Metadata } from 'next';
 
 import styles from './styles.module.scss';
+
+export async function generateMetadata(
+  { params }: {params: { productId: string }}
+): Promise<Metadata> {
+  const product = await getProduct(params.productId);
+
+  return {
+    title: product ? product.name : '...',
+  };
+}
 
 export default async function ProductPage({ params }: {
   params: {
