@@ -9,6 +9,9 @@ export { ProductsPagination } from './pagination';
 export { ProductMain } from './product-main';
 export { ProductSpecs } from './product-specs';
 export { ProductSlider } from './product-slider';
+export { ShowReviews } from './show-reviews';
+export { ProductReviews } from './product-reviews';
 export {
   SearchForm,
+  ReviewForm,
 } from './forms';

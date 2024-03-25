@@ -18,7 +18,7 @@ export default function NotFound() {
       ]} />
 
       <NoData
-        text={t('NoData.noProducts')}
+        text={t('NoData.noProduct')}
         route={routes.toHome()}
         textLink={t('NoData.goHome')}
       />

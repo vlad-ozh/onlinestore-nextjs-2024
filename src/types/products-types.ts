@@ -1,3 +1,5 @@
+import { Types } from 'mongoose';
+
 export interface ICategoriesList {
   smartphones: 'smartphones';
   tablets: 'tablets';
@@ -74,7 +76,7 @@ interface IReview {
 };
 
 export interface IReviewForModel extends IReview{
-  _id: string;
+  _id: Types.ObjectId;
 };
 
 export interface IReviewWithId extends IReview{
@@ -86,7 +88,10 @@ export interface IProduct {
   brand: string;
   category: { _id: string; name: string; };
   price: number;
-  description: string;
+  description:
+    'iphone-14-pro-max-description' |
+    'ipad-air-description' |
+    'macbook-pro-16-description';
   image: string[];
   salesCount: number;
   amount: number;

@@ -1,10 +1,14 @@
-import { Breadcrumbs, ProductMain } from '@/components';
+import {
+  Breadcrumbs,
+  ProductMain,
+  ProductSpecs,
+  ProductReviews,
+} from '@/components';
 import { getTranslations } from 'next-intl/server';
 import { getProduct } from '@/lib/data';
 import { routes } from '@/utils/navigation-routes';
 import { TCategoriesList } from '@/types/products-types';
 import { notFound } from 'next/navigation';
-import { ProductSpecs } from '@/components';
 import { currentUser } from '@clerk/nextjs';
 
 import styles from './styles.module.scss';
@@ -38,6 +42,11 @@ export default async function ProductPage({ params }: {
 
       <ProductMain isUser={Boolean(user)} product={product}/>
       <ProductSpecs specs={product.characteristics}/>
+      <ProductReviews
+        isUser={Boolean(user)}
+        productId={product.id}
+        reviews={product.reviews}
+      />
 
     </main>
   );

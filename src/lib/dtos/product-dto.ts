@@ -3,7 +3,7 @@ import { IProductDocument } from '../models/product-model';
 
 export const ProductDto = (model: IProductDocument): IClientProduct => {
   const reviews = model.reviews.map(review => ({
-    id: review._id,
+    id: review._id.toString(),
     userId: review.userId,
     userName: review.userName,
     rating: review.rating,

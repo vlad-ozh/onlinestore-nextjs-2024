@@ -9,36 +9,36 @@ import { useTranslations } from 'next-intl';
 import { routes } from '@/utils/navigation-routes';
 import { categories } from '@/utils/categories';
 
-import style from './style.module.scss';
+import styles from './styles.module.scss';
 
 export const ShowHomeCategories: React.FC = () => {
   const t = useTranslations('Categories');
 
   return (
-    <div className={style.categories}>
-      <ul className={style.categoriesList}>
-        <li className={style.categoriesItem}>
+    <div className={styles.categories}>
+      <ul className={styles.categoriesList}>
+        <li className={styles.categoriesItem}>
           <Link
             href={routes.toCategory(categories.smartphones)}
-            className={style.categoriesItemLink}
+            className={styles.categoriesItemLink}
           >
             <DevicePhoneMobileIcon width={48}/>
             {t('smartphones')}
           </Link>
         </li>
-        <li className={style.categoriesItem}>
+        <li className={styles.categoriesItem}>
           <Link
             href={routes.toCategory(categories.tablets)}
-            className={style.categoriesItemLink}
+            className={styles.categoriesItemLink}
           >
             <DeviceTabletIcon width={48}/>
             {t('tablets')}
           </Link>
         </li>
-        <li className={style.categoriesItem}>
+        <li className={styles.categoriesItem}>
           <Link
             href={routes.toCategory(categories.laptops)}
-            className={style.categoriesItemLink}
+            className={styles.categoriesItemLink}
           >
             <ComputerDesktopIcon width={48}/>
             {t('laptops')}

@@ -7,7 +7,7 @@ import { totalRating } from '@/utils/totalRating';
 import { ProductSlider } from '..';
 import Image from 'next/image';
 
-import style from './style.module.scss';
+import styles from './styles.module.scss';
 
 interface IProps {
   isUser: boolean;
@@ -31,15 +31,15 @@ export const ProductMain: React.FC<IProps> = async (props) => {
 
   return (
     <>
-      <h2 className={style.productTitle}>
+      <h2 className={styles.productTitle}>
         {product.name}
       </h2>
-      <div className={style.productMain}>
-        <div className={style.productMainImages}>
+      <div className={styles.productMain}>
+        <div className={styles.productMainImages}>
           <ProductSlider>
             {product.image.map((image, index) => {
               return (
-                <li key={index} className={style.productMainSlide} >
+                <li key={index} className={styles.productMainSlide} >
                   <Image
                     src={image}
                     width={0}
@@ -47,7 +47,7 @@ export const ProductMain: React.FC<IProps> = async (props) => {
                     sizes={'100vw'}
                     alt={product.name}
                     priority
-                    className={style.productMainImage}
+                    className={styles.productMainImage}
                   />
                 </li>
               );
@@ -55,12 +55,12 @@ export const ProductMain: React.FC<IProps> = async (props) => {
           </ProductSlider>
         </div>
 
-        <div className={style.productMainInfo}>
-          <div className={style.productMainInfoInner}>
-            <div className={style.productMainInfoRating}>
+        <div className={styles.productMainInfo}>
+          <div className={styles.productMainInfoInner}>
+            <div className={styles.productMainInfoRating}>
               {t('rating')}: {rating ? rating : '-'}
             </div>
-            <div className={style.productMainInfoAvailable}>
+            <div className={styles.productMainInfoAvailable}>
               {amountOfProduct ?
                 t('available')
                 :
@@ -73,8 +73,8 @@ export const ProductMain: React.FC<IProps> = async (props) => {
                 productId={product.id}
               />
             </div>
-            <div className={style.productMainInfoBuy}>
-              <h3 className={style.productMainInfoPrice}>
+            <div className={styles.productMainInfoBuy}>
+              <h3 className={styles.productMainInfoPrice}>
                 {product.price.toLocaleString()} ₴
               </h3>
               <BuyButton
@@ -85,8 +85,8 @@ export const ProductMain: React.FC<IProps> = async (props) => {
                 withText={{ buyText: '', inCartText: '' }}
               />
             </div>
-            <div className={style.productMainInfoDescription}>
-              <h3 className={style.productMainInfoDescTitle}>
+            <div className={styles.productMainInfoDescription}>
+              <h3 className={styles.productMainInfoDescTitle}>
                 {t('description')}
               </h3>
               <p>{t(`descriptions.${product.description}`)}</p>
