@@ -1,5 +1,4 @@
 ### In this project I use these technologies:
-#### client:
 - next.js 14
 - typescript
 - scss modules
