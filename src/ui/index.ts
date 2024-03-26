@@ -13,3 +13,4 @@ export { Textarea } from './textarea';
 export { Submit } from './submit';
 export { RatingSelect } from './rating-select';
 export { ShowError } from './show-error';
+export { SampleNextArrow, SamplePrevArrow } from './slider-arrows';

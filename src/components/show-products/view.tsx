@@ -30,7 +30,7 @@ export const ShowProducts: React.FC<IProps> = async ({ products }) => {
         return (
           <li key={productId}>
             <ProductCard
-              isUser={Boolean(user)}
+              user={user}
               name={name}
               productId={productId}
               image={image[0]}

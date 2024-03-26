@@ -11,6 +11,8 @@ export { ProductSpecs } from './product-specs';
 export { ProductSlider } from './product-slider';
 export { ShowReviews } from './show-reviews';
 export { ProductReviews } from './product-reviews';
+export { PopularProductsSlider } from './popular-products-slider';
+export { ShowPopularProducts } from './show-popular-products';
 export {
   SearchForm,
   ReviewForm,

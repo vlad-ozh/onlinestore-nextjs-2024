@@ -1,21 +1,22 @@
 'use server';
 
-import { currentUser } from '@clerk/nextjs';
 import { getTranslations } from 'next-intl/server';
 import { unstable_noStore as noStore } from 'next/cache';
 import { ApiError } from '../api-error';
+import { User } from '@clerk/nextjs/server';
 
-export const isFavoriteProduct = async (productId: string) => {
+export const isFavoriteProduct = async (
+  productId: string,
+  user: User | null
+) => {
   noStore();
 
   try {
     const t = await getTranslations('Errors');
 
-    const user = await currentUser();
-
     if (!user) throw ApiError.UnauthorizedError(t('unauth'));
 
-    const favorites: any = user?.privateMetadata.favorites;
+    const favorites: any = user.privateMetadata.favorites;
 
     if (!favorites) return false;
 
