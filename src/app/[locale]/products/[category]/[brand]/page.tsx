@@ -1,6 +1,11 @@
-import { Breadcrumbs, ProductsPagination, ShowProducts } from '@/components';
+import {
+  Breadcrumbs,
+  ProductsPagination,
+  ShowProducts,
+  ShowPopularProducts,
+} from '@/components';
 import { getTranslations } from 'next-intl/server';
-import { getProducts } from '@/lib/data';
+import { getPopularProductsByBrand, getProducts } from '@/lib/data';
 import { routes } from '@/utils/navigation-routes';
 import { TCategoriesList } from '@/types/products-types';
 import { notFound } from 'next/navigation';
@@ -32,6 +37,11 @@ export default async function ProductsPage({ params, searchParams }: {
 
   if (!products?.length) notFound();
 
+  const popularProducts = await getPopularProductsByBrand(
+    params.category,
+    params.brand
+  );
+
   const t = await getTranslations('Breadcrumbs');
 
   const currentPage = Number(searchParams?.page) || 1;
@@ -55,6 +65,9 @@ export default async function ProductsPage({ params, searchParams }: {
 
       <ShowProducts products={productsOnOnePage()}/>
       <ProductsPagination totalProducts={products.length}/>
+      {popularProducts && <ShowPopularProducts
+        popularProducts={popularProducts}
+      />}
     </main>
   );
 }

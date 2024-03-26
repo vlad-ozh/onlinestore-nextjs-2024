@@ -1,12 +1,11 @@
-import { Breadcrumbs, ShowCategory } from '@/components';
+import { Breadcrumbs, ShowCategory, ShowPopularProducts } from '@/components';
 import { routes } from '@/utils/navigation-routes';
 import { TCategoriesList } from '@/types/products-types';
-import { useTranslations } from 'next-intl';
 import { Suspense } from 'react';
 import { ShowCategorySkeleton } from '@/skeletons';
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
-import { getCategoryInfo } from '@/lib/data';
+import { getCategoryInfo, getPopularProductsByCategory } from '@/lib/data';
 
 import styles from './styles.module.scss';
 
@@ -22,12 +21,14 @@ export async function generateMetadata(
   };
 }
 
-export default function CategoryPage({ params }: {
+export default async function CategoryPage({ params }: {
   params: { category: TCategoriesList }
 }) {
   const categoryParam = params.category;
 
-  const t = useTranslations('Breadcrumbs');
+  const t = await getTranslations('Breadcrumbs');
+
+  const popularProducts = await getPopularProductsByCategory(params.category);
 
   return (
     <main className={styles.main}>
@@ -40,6 +41,10 @@ export default function CategoryPage({ params }: {
       <Suspense fallback={<ShowCategorySkeleton />}>
         <ShowCategory categoryParam={categoryParam} />
       </Suspense>
+
+      {popularProducts && <ShowPopularProducts
+        popularProducts={popularProducts}
+      />}
     </main>
   );
 }

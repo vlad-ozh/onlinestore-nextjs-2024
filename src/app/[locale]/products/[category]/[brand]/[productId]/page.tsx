@@ -51,7 +51,7 @@ export default async function ProductPage({ params }: {
         { name: product.name, path: '' },
       ]} />
 
-      <ProductMain isUser={Boolean(user)} product={product}/>
+      <ProductMain user={user} product={product}/>
       <ProductSpecs specs={product.characteristics}/>
       <ProductReviews
         isUser={Boolean(user)}

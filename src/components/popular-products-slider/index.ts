@@ -1,0 +1,1 @@
+export { PopularProductsSlider } from './view';

@@ -6,11 +6,12 @@ import { inCartProduct, isFavoriteProduct } from '@/lib/data';
 import { getTranslations } from 'next-intl/server';
 import { IReviewWithId } from '@/types/products-types';
 import { totalRating } from '@/utils/totalRating';
+import { User } from '@clerk/nextjs/server';
 
 import styles from './styles.module.scss';
 
 interface IProps {
-  isUser: boolean;
+  user: User | null;
   name: string;
   image: string;
   price: string;
@@ -21,9 +22,8 @@ interface IProps {
 };
 
 export const ProductCard: React.FC<IProps> = async (props) => {
-  const t = await getTranslations();
   const {
-    isUser,
+    user,
     name,
     image,
     price,
@@ -33,8 +33,10 @@ export const ProductCard: React.FC<IProps> = async (props) => {
     reviews,
   } = props;
 
-  const isFavorite = await isFavoriteProduct(productId);
-  const inCart = await inCartProduct(productId);
+  const t = await getTranslations();
+
+  const isFavorite = await isFavoriteProduct(productId, user);
+  const inCart = await inCartProduct(productId, user);
 
   const rating = totalRating(reviews);
 
@@ -65,7 +67,7 @@ export const ProductCard: React.FC<IProps> = async (props) => {
           <FavoriteButton
             productId={productId}
             isFavorite={Boolean(isFavorite)}
-            isUser={isUser}
+            isUser={Boolean(user)}
           />
         </div>
         <div className={styles.cardBuy}>
@@ -75,7 +77,7 @@ export const ProductCard: React.FC<IProps> = async (props) => {
             productId={productId}
             amount={amount}
             inCart={Boolean(inCart)}
-            isUser={isUser}
+            isUser={Boolean(user)}
           />
         </div>
       </div>

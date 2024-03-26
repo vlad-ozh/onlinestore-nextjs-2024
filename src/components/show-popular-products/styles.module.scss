@@ -1,0 +1,28 @@
+.products {
+  margin-top: 50px;
+  width: 100%;
+
+  &Title {
+    margin-bottom: 15px;
+
+    @media screen and (max-width: 600px) {
+      font-size: 18px;
+    }
+  }
+
+  &Slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 15px 15px 30px;
+
+    @media screen and (max-width: 500px) {
+      padding: 0 0 20px;
+    }
+  }
+
+  &Item {
+    padding: 10px;
+  }
+}

@@ -6,24 +6,25 @@ import { inCartProduct, isFavoriteProduct } from '@/lib/data';
 import { totalRating } from '@/utils/totalRating';
 import { ProductSlider } from '..';
 import Image from 'next/image';
+import { User } from '@clerk/nextjs/server';
 
 import styles from './styles.module.scss';
 
 interface IProps {
-  isUser: boolean;
+  user: User | null;
   product: IClientProduct;
 }
 
 export const ProductMain: React.FC<IProps> = async (props) => {
   const {
-    isUser,
+    user,
     product,
   } = props;
 
   const t = await getTranslations('Product');
 
-  const isFavorite = await isFavoriteProduct(product.id);
-  const inCart = await inCartProduct(product.id);
+  const isFavorite = await isFavoriteProduct(product.id, user);
+  const inCart = await inCartProduct(product.id, user);
 
   const amountOfProduct = Boolean(product.amount);
 
@@ -68,7 +69,7 @@ export const ProductMain: React.FC<IProps> = async (props) => {
               }
 
               <FavoriteButton
-                isUser={isUser}
+                isUser={Boolean(user)}
                 isFavorite={Boolean(isFavorite)}
                 productId={product.id}
               />
@@ -81,7 +82,7 @@ export const ProductMain: React.FC<IProps> = async (props) => {
                 productId={product.id}
                 amount={amountOfProduct}
                 inCart={Boolean(inCart)}
-                isUser={isUser}
+                isUser={Boolean(user)}
                 withText={{ buyText: '', inCartText: '' }}
               />
             </div>
