@@ -31,11 +31,13 @@ const SwitchLanguageButton = dynamic(
 interface IProps {
   user: boolean;
   totalFavorites: number | undefined;
+  totalProductsInCart: number | undefined;
 }
 
 export const HeaderContent: React.FC<IProps> = ({
   user,
   totalFavorites,
+  totalProductsInCart,
 }) => {
   const t = useTranslations('Header');
 
@@ -173,6 +175,11 @@ export const HeaderContent: React.FC<IProps> = ({
               href={user ? toCart() : toSignIn()}
               className={styles.navListItemLink}
             >
+              <span className={clsx(styles.counter, styles.cartCounter, {
+                [styles.noCount]: !totalProductsInCart,
+              })}>
+                {totalProductsInCart}
+              </span>
               <ShoppingCartIcon width={24} />
             </Link>
           </li>

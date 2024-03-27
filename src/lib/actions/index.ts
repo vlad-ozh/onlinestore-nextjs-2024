@@ -4,6 +4,6 @@ export {
 } from './products-actions';
 export {
   addProductToFavorites,
-  deleteProductFromFavorites,
+  deleteFavoriteProduct,
   addProductToCart,
 } from './user-actions';

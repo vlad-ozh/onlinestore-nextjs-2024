@@ -6,12 +6,13 @@ import { getTranslations } from 'next-intl/server';
 import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
 import { action } from '../safe-action';
+import { metadataFavorites } from '@/utils/metadata-names';
 
 const schema = z.object({
   productId: z.string(),
 });
 
-export const deleteProductFromFavorites = action(schema, async ({
+export const deleteFavoriteProduct = action(schema, async ({
   productId,
 }) => {
   const t = await getTranslations('Errors');
@@ -21,7 +22,7 @@ export const deleteProductFromFavorites = action(schema, async ({
 
     if (!user) throw ApiError.UnauthorizedError(t('unauth'));
 
-    const favorites: any = user?.privateMetadata.favorites;
+    const favorites: any = user?.privateMetadata[metadataFavorites];
 
     if (!favorites.some((product: string) => product === productId)) return;
 

@@ -4,6 +4,7 @@ import { getTranslations } from 'next-intl/server';
 import { unstable_noStore as noStore } from 'next/cache';
 import { ApiError } from '../api-error';
 import { User } from '@clerk/nextjs/server';
+import { metadataFavorites } from '@/utils/metadata-names';
 
 export const isFavoriteProduct = async (
   productId: string,
@@ -16,7 +17,7 @@ export const isFavoriteProduct = async (
 
     if (!user) throw ApiError.UnauthorizedError(t('unauth'));
 
-    const favorites: any = user.privateMetadata.favorites;
+    const favorites: any = user.privateMetadata[metadataFavorites];
 
     if (!favorites) return false;
 

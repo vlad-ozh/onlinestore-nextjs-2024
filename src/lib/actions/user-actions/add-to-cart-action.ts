@@ -6,6 +6,7 @@ import { z } from 'zod';
 import { action } from '../safe-action';
 import { getTranslations } from 'next-intl/server';
 import { ApiError, returnError } from '@/lib/api-error';
+import { metadataCart } from '@/utils/metadata-names';
 
 const schema = z.object({
   productId: z.string(),
@@ -19,7 +20,7 @@ export const addProductToCart = action(schema, async ({ productId }) => {
 
     if (!user) throw ApiError.UnauthorizedError(t('unauth'));
 
-    const cartProducts: any = user?.privateMetadata.cart;
+    const cartProducts: any = user?.privateMetadata[metadataCart];
 
     if (!cartProducts) {
       await clerkClient.users.updateUserMetadata(user.id, {

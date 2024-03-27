@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { routes } from '@/utils/navigation-routes';
 import {
   addProductToFavorites,
-  deleteProductFromFavorites,
+  deleteFavoriteProduct,
 } from '@/lib/actions';
 import { useAction } from 'next-safe-action/hooks';
 
@@ -31,7 +31,7 @@ export const FavoriteButton: React.FC<IProps> = ({
   const {
     execute: executeDeleteProduct,
     status: statusDeleteProduct,
-  } = useAction(deleteProductFromFavorites);
+  } = useAction(deleteFavoriteProduct);
 
   return (
     <>
@@ -52,7 +52,10 @@ export const FavoriteButton: React.FC<IProps> = ({
               [styles.isFavorite]: isFavorite,
             })}
           >
-            <HeartIcon width={24} />
+            <HeartIcon
+              width={24}
+              className={clsx({ [styles.isFavorite]: isFavorite })}
+            />
           </button>
         )
         :

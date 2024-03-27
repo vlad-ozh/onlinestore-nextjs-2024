@@ -9,9 +9,9 @@ import { getTranslations } from 'next-intl/server';
 import { ApiError } from '../api-error';
 import { currentUser } from '@clerk/nextjs';
 import { IClientProduct } from '@/types/products-types';
-import { metadataFavorites } from '@/utils/metadata-names';
+import { metadataCart } from '@/utils/metadata-names';
 
-export const getFavoriteProducts = async () => {
+export const getCartProducts = async () => {
   noStore();
 
   try {
@@ -23,10 +23,10 @@ export const getFavoriteProducts = async () => {
 
     if (!user) throw ApiError.UnauthorizedError(t('unauth'));
 
-    const favorites: any = user?.privateMetadata[metadataFavorites];
+    const cart: any = user?.privateMetadata[metadataCart];
 
     const products = await ProductModel.find({
-      _id: { $in: favorites },
+      _id: { $in: cart },
     }).populate({
       path: 'category',
       select: 'name',

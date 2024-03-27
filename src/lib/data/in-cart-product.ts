@@ -4,6 +4,7 @@ import { getTranslations } from 'next-intl/server';
 import { unstable_noStore as noStore } from 'next/cache';
 import { ApiError } from '../api-error';
 import { User } from '@clerk/nextjs/server';
+import { metadataCart } from '@/utils/metadata-names';
 
 export const inCartProduct = async (
   productId: string,
@@ -16,7 +17,7 @@ export const inCartProduct = async (
 
     if (!user) throw ApiError.UnauthorizedError(t('unauth'));
 
-    const cartProducts: any = user.privateMetadata.cart;
+    const cartProducts: any = user.privateMetadata[metadataCart];
 
     if (!cartProducts) return false;
 

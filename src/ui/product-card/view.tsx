@@ -35,8 +35,8 @@ export const ProductCard: React.FC<IProps> = async (props) => {
 
   const t = await getTranslations();
 
-  const isFavorite = await isFavoriteProduct(productId, user);
-  const inCart = await inCartProduct(productId, user);
+  const isFavorite = user ? await isFavoriteProduct(productId, user) : false;
+  const inCart = user ? await inCartProduct(productId, user) : false;
 
   const rating = totalRating(reviews);
 

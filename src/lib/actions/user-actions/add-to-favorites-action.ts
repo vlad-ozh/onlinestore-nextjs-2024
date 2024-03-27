@@ -6,6 +6,7 @@ import { clerkClient, currentUser } from '@clerk/nextjs';
 import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
 import { ApiError, returnError } from '@/lib/api-error';
+import { metadataFavorites } from '@/utils/metadata-names';
 
 const schema = z.object({
   productId: z.string(),
@@ -19,7 +20,7 @@ export const addProductToFavorites = action(schema, async ({ productId }) => {
 
     if (!user) throw ApiError.UnauthorizedError(t('unauth'));
 
-    const favorites: any = user?.privateMetadata.favorites;
+    const favorites: any = user?.privateMetadata[metadataFavorites];
 
     if (!favorites) {
       await clerkClient.users.updateUserMetadata(user.id, {
