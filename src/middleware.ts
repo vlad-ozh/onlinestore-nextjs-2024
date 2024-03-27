@@ -17,6 +17,7 @@ export default authMiddleware({
     '/:locale',
     '/:locale/account',
     '/:locale/account/info',
+    '/:locale/account/cart',
     '/:locale/sign-up',
     '/:locale/sign-in',
     '/:locale/products',

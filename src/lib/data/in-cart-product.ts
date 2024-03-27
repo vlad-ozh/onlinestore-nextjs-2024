@@ -5,6 +5,7 @@ import { unstable_noStore as noStore } from 'next/cache';
 import { ApiError } from '../api-error';
 import { User } from '@clerk/nextjs/server';
 import { metadataCart } from '@/utils/metadata-names';
+import { ICartProduct } from '@/types/user-types';
 
 export const inCartProduct = async (
   productId: string,
@@ -22,7 +23,7 @@ export const inCartProduct = async (
     if (!cartProducts) return false;
 
     const inCart: boolean = cartProducts.some(
-      (product: string) => product === productId
+      (product: ICartProduct) => product.productId === productId
     );
 
     return inCart;

@@ -6,4 +6,5 @@ export {
   addProductToFavorites,
   deleteFavoriteProduct,
   addProductToCart,
+  deleteProductFromCart,
 } from './user-actions';

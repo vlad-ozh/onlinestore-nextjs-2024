@@ -10,6 +10,7 @@ import { ApiError } from '../api-error';
 import { currentUser } from '@clerk/nextjs';
 import { IClientProduct } from '@/types/products-types';
 import { metadataCart } from '@/utils/metadata-names';
+import { ICartProduct } from '@/types/user-types';
 
 export const getCartProducts = async () => {
   noStore();
@@ -25,8 +26,12 @@ export const getCartProducts = async () => {
 
     const cart: any = user?.privateMetadata[metadataCart];
 
+    const cartProducts: string[] = cart.map(
+      (product: ICartProduct) => product.productId
+    );
+
     const products = await ProductModel.find({
-      _id: { $in: cart },
+      _id: { $in: cartProducts },
     }).populate({
       path: 'category',
       select: 'name',
