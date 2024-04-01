@@ -115,3 +115,7 @@ export interface IClientProduct {
   reviews: IReviewWithId[];
   characteristics: ICharacteristics;
 }
+
+export interface IClientProductCart extends IClientProduct {
+  quantity: number;
+}

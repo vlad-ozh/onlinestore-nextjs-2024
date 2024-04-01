@@ -6,13 +6,14 @@ import { getTranslations } from 'next-intl/server';
 import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
 import { action } from '../safe-action';
-import { metadataFavorites } from '@/utils/metadata-names';
+import { metadataCart } from '@/utils/metadata-names';
+import { ICartProduct } from '@/types/user-types';
 
 const schema = z.object({
   productId: z.string(),
 });
 
-export const deleteFavoriteProduct = action(schema, async ({
+export const deleteProductFromCart = action(schema, async ({
   productId,
 }) => {
   try {
@@ -22,14 +23,16 @@ export const deleteFavoriteProduct = action(schema, async ({
 
     if (!user) throw ApiError.UnauthorizedError(t('unauth'));
 
-    const favorites: any = user?.privateMetadata[metadataFavorites];
+    const cart: any = user?.privateMetadata[metadataCart];
 
-    if (!favorites.some((product: string) => product === productId)) return;
+    if (!cart.some(
+      (product: ICartProduct) => product.productId === productId)
+    ) return;
 
     await clerkClient.users.updateUserMetadata(user.id, {
       privateMetadata: {
-        [metadataFavorites]: favorites.filter((product: string) =>
-          product !== productId
+        [metadataCart]: cart.filter((product: ICartProduct) =>
+          product.productId !== productId
         ),
       },
     });

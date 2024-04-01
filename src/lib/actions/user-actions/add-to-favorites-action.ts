@@ -13,9 +13,8 @@ const schema = z.object({
 });
 
 export const addProductToFavorites = action(schema, async ({ productId }) => {
-  const t = await getTranslations('Errors');
-
   try {
+    const t = await getTranslations('Errors');
     const user = await currentUser();
 
     if (!user) throw ApiError.UnauthorizedError(t('unauth'));
@@ -25,7 +24,7 @@ export const addProductToFavorites = action(schema, async ({ productId }) => {
     if (!favorites) {
       await clerkClient.users.updateUserMetadata(user.id, {
         privateMetadata: {
-          favorites: [productId],
+          [metadataFavorites]: [productId],
         },
       });
 
@@ -36,7 +35,7 @@ export const addProductToFavorites = action(schema, async ({ productId }) => {
 
     await clerkClient.users.updateUserMetadata(user.id, {
       privateMetadata: {
-        favorites: favorites.concat(productId),
+        [metadataFavorites]: favorites.concat(productId),
       },
     });
   } catch (error) {

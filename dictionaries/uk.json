@@ -40,6 +40,7 @@
     "noCategory": "Категорію не знайдено",
     "noCategories": "Категорій не знайдено",
     "noFavoriteProducts": "Немає обраних товарів",
+    "noCartProducts": "Немає товарів у кошику",
     "noProducts": "Немає товарів",
     "noProduct": "Немає товару",
     "goHome": "До головної"
@@ -47,7 +48,7 @@
   "Card": {
     "rating": "Оцінка",
     "buy": "Купити",
-  	"inCart": "У кошику"
+    "inCart": "У кошику"
   },
   "Errors": {
     "notFound": "Даних не знайдено!",
@@ -105,5 +106,9 @@
     "loginLink": "Ввійти",
     "reviews": "Відгуки:",
     "popularProducts": "Популярні товари"
+  },
+  "Cart": {
+    "order": "Оформити",
+    "totalPrice": "Всього:"
   }
 }
