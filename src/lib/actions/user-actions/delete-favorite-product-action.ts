@@ -28,7 +28,7 @@ export const deleteFavoriteProduct = action(schema, async ({
 
     await clerkClient.users.updateUserMetadata(user.id, {
       privateMetadata: {
-        favorites: favorites.filter((product: string) =>
+        [metadataFavorites]: favorites.filter((product: string) =>
           product !== productId
         ),
       },

@@ -11,9 +11,15 @@ import { ICartProduct } from '@/types/user-types';
 
 const schema = z.object({
   productId: z.string(),
+  amountProduct: z.number(),
+  newQuantity: z.number(),
 });
 
-export const addProductToCart = action(schema, async ({ productId }) => {
+export const changeQuantityProduct = action(schema, async ({
+  productId,
+  amountProduct,
+  newQuantity,
+}) => {
   try {
     const t = await getTranslations('Errors');
     const user = await currentUser();
@@ -22,26 +28,26 @@ export const addProductToCart = action(schema, async ({ productId }) => {
 
     const cartProducts: any = user?.privateMetadata[metadataCart];
 
-    const newProduct: ICartProduct = {
-      productId,
-      quantity: 1,
-    };
+    let correctQuantity = newQuantity;
 
-    if (!cartProducts) {
-      await clerkClient.users.updateUserMetadata(user.id, {
-        privateMetadata: {
-          [metadataCart]: [newProduct],
-        },
-      });
-
-      return revalidatePath('/');
-    };
-
-    if (cartProducts.some((product: string) => product === productId)) return;
+    if (newQuantity < 1) {
+      correctQuantity = 1;
+    } else if (newQuantity > amountProduct) {
+      correctQuantity = amountProduct;
+    }
 
     await clerkClient.users.updateUserMetadata(user.id, {
       privateMetadata: {
-        [metadataCart]: cartProducts.concat(newProduct),
+        [metadataCart]: cartProducts.map((product: ICartProduct) => {
+          if (product.productId === productId) {
+            return {
+              ...product,
+              quantity: correctQuantity,
+            };
+          }
+
+          return product;
+        }),
       },
     });
   } catch (error) {

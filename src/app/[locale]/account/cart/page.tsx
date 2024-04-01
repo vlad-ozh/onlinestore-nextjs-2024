@@ -1,4 +1,4 @@
-import { Breadcrumbs, ShowProducts } from '@/components';
+import { Breadcrumbs, CartContent } from '@/components';
 import { getTranslations } from 'next-intl/server';
 import { getCartProducts } from '@/lib/data';
 import { routes } from '@/utils/navigation-routes';
@@ -35,7 +35,7 @@ export default async function CartPage() {
       ]}/>
 
       {cartProducts?.length ? (
-        <ShowProducts products={cartProducts}/>
+        <CartContent products={cartProducts}/>
       ) : (
         <NoData
           text={t('NoData.noCartProducts')}

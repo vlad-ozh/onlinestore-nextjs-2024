@@ -31,7 +31,7 @@ export const deleteProductFromCart = action(schema, async ({
 
     await clerkClient.users.updateUserMetadata(user.id, {
       privateMetadata: {
-        favorites: cart.filter((product: ICartProduct) =>
+        [metadataCart]: cart.filter((product: ICartProduct) =>
           product.productId !== productId
         ),
       },

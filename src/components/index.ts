@@ -13,6 +13,7 @@ export { ShowReviews } from './show-reviews';
 export { ProductReviews } from './product-reviews';
 export { PopularProductsSlider } from './popular-products-slider';
 export { ShowPopularProducts } from './show-popular-products';
+export { CartContent } from './cart-content';
 export {
   SearchForm,
   ReviewForm,

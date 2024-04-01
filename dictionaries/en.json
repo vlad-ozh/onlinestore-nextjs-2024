@@ -105,5 +105,9 @@
     "loginLink": "Log in",
     "reviews": "Reviews:",
     "popularProducts": "Popular products"
+  },
+  "Cart": {
+    "order": "To order",
+	  "totalPrice": "Total:"
   }
 }

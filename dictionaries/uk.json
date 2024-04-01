@@ -48,7 +48,7 @@
   "Card": {
     "rating": "Оцінка",
     "buy": "Купити",
-  	"inCart": "У кошику"
+    "inCart": "У кошику"
   },
   "Errors": {
     "notFound": "Даних не знайдено!",
@@ -106,5 +106,9 @@
     "loginLink": "Ввійти",
     "reviews": "Відгуки:",
     "popularProducts": "Популярні товари"
+  },
+  "Cart": {
+    "order": "Оформити",
+    "totalPrice": "Всього:"
   }
 }
