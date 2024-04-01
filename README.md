@@ -19,10 +19,12 @@
 ### Features In this project:
 -  change the theme
 -  change the language
--  show product categories
--  show product pages
--  show popular products
--  show each product separately
+-  view the product categories
+-  view the product pages
+-  view the popular products
+-  view each product separately
+-  view your favorite products
+-  view the shopping cart
 -  leave review under the product
 -  add products to favorites and to the cart
 -  sign in/up to the application, forgot password option, confirm your mail (by using clerk)
@@ -43,6 +45,8 @@ yarn dev
 pnpm dev
 # or
 bun dev
+# or using Docker Compose
+docker-compose up --build
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
