@@ -1,7 +1,3 @@
-// Example routes
-//   searchProducts: '/products/search/:data',
-
-
 export const routes = {
   toHome: () => '/',
   toSignIn: () => '/sign-in',
@@ -15,4 +11,10 @@ export const routes = {
     `/products/${category}/${brand}`,
   toProduct: ( category: string, brand: string, productId: string ) =>
     `/products/${category}/${brand}/${productId}`,
+  toSearchProducts: (query: string) => {
+    const params = new URLSearchParams();
+    params.set('query', query);
+
+    return `/products/search?${params.toString()}`;
+  },
 };

@@ -10,6 +10,7 @@ export { getPopularProducts } from './get-popular-products';
 export { getPopularProductsByBrand } from './get-popular-products-by-brand';
 export { getTotalCartProducts } from './get-total-cart-products';
 export { getTotalFavorites } from './get-total-favorites';
+export { getSearchProducts } from './get-search-products';
 export {
   getPopularProductsByCategory,
 } from './get-popular-products-by-category';
