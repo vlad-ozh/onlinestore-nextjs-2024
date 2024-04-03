@@ -25,6 +25,7 @@
 -  view each product separately
 -  view your favorite products
 -  view the shopping cart
+-  view search products
 -  leave review under the product
 -  add products to favorites and to the cart
 -  sign in/up to the application, forgot password option, confirm your mail (by using clerk)
