@@ -1,49 +1,37 @@
 import React from 'react';
-import { routes } from '@/utils/navigation-routes';
-import { IClientProduct } from '@/types/products-types';
-import { ProductCard } from '@/ui';
 import { currentUser } from '@clerk/nextjs';
-
-import styles from './styles.module.scss';
+import { getProducts } from '@/lib/data';
+import { notFound } from 'next/navigation';
+import { ProductsList, ProductsPagination } from '..';
+import { productsOnOnePage } from '@/utils/products-on-one-page';
 
 interface IProps {
-  products: IClientProduct[];
+  categoryParam: string;
+  brandParam: string;
+  currentPage: number;
 }
 
-export const ShowProducts: React.FC<IProps> = async ({ products }) => {
+export const ShowProducts: React.FC<IProps> = async ({
+  categoryParam,
+  brandParam,
+  currentPage,
+}) => {
   const user = await currentUser();
+  const products = await getProducts(categoryParam, brandParam);
+
+  if (!products?.length) notFound();
 
   return (
-    <ul className={styles.productsList}>
-      {products.map((product) => {
-        const {
-          id: productId,
-          brand,
-          category,
-          image,
-          name,
-          price,
-          reviews,
-          amount,
-        } = product;
-
-        return (
-          <li key={productId}>
-            <ProductCard
-              user={user}
-              name={name}
-              productId={productId}
-              image={image[0]}
-              price={price.toLocaleString()}
-              toProduct={
-                routes.toProduct(category, brand, productId)
-              }
-              amount={Boolean(amount)}
-              reviews={reviews}
-            />
-          </li>
-        );
-      })}
-    </ul>
+    <>
+      <ProductsList
+        user={user}
+        products={productsOnOnePage(products, currentPage)}
+      />
+      {
+        products.length > 10
+        &&
+        <ProductsPagination totalProducts={products.length} />
+      }
+    </>
   );
 };

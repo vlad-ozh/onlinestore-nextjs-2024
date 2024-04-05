@@ -1,11 +1,11 @@
-import { Breadcrumbs, ShowProducts } from '@/components';
+import { Breadcrumbs, ShowFavoriteProducts } from '@/components';
 import { getTranslations } from 'next-intl/server';
-import { getFavoriteProducts } from '@/lib/data';
 import { routes } from '@/utils/navigation-routes';
-import { NoData } from '@/ui';
 import { currentUser } from '@clerk/nextjs';
 import { redirect } from 'next/navigation';
 import { Metadata } from 'next';
+import { Suspense } from 'react';
+import { ShowProductsSkeleton } from '@/skeletons';
 
 import styles from './styles.module.scss';
 
@@ -17,14 +17,18 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function FavoritesPage() {
+export default async function FavoritesPage({ searchParams }: {
+  searchParams?: {
+    page?: string;
+  };
+}) {
   const user = await currentUser();
 
   if (!user) redirect(routes.toSignIn());
 
   const t = await getTranslations();
 
-  const favoriteProducts = await getFavoriteProducts();
+  const currentPage = Number(searchParams?.page) || 1;
 
   return (
     <main className={styles.main}>
@@ -34,15 +38,9 @@ export default async function FavoritesPage() {
         { name: t('Breadcrumbs.favorites'), path: '' },
       ]}/>
 
-      {favoriteProducts?.length ? (
-        <ShowProducts products={favoriteProducts}/>
-      ) : (
-        <NoData
-          text={t('NoData.noFavoriteProducts')}
-          route={routes.toHome()}
-          textLink={t('NoData.goHome')}
-        />
-      )}
+      <Suspense fallback={<ShowProductsSkeleton />}>
+        <ShowFavoriteProducts user={user} currentPage={currentPage}/>
+      </Suspense>
     </main>
   );
 }

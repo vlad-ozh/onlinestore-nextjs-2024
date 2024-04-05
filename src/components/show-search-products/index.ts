@@ -1,0 +1,1 @@
+export { ShowSearchProducts } from './view';

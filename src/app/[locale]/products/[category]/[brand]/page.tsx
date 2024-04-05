@@ -1,15 +1,15 @@
 import {
   Breadcrumbs,
-  ProductsPagination,
   ShowProducts,
   ShowPopularProducts,
 } from '@/components';
 import { getTranslations } from 'next-intl/server';
-import { getPopularProductsByBrand, getProducts } from '@/lib/data';
+import { getPopularProductsByBrand } from '@/lib/data';
 import { routes } from '@/utils/navigation-routes';
 import { TCategoriesList } from '@/types/products-types';
-import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
+import { ShowProductsSkeleton } from '@/skeletons';
+import { Suspense } from 'react';
 
 import styles from './styles.module.scss';
 
@@ -32,27 +32,14 @@ export default async function ProductsPage({ params, searchParams }: {
     page?: string;
   };
 }) {
-
-  const products = await getProducts(params.category, params.brand);
-
-  if (!products?.length) notFound();
+  const t = await getTranslations('Breadcrumbs');
 
   const popularProducts = await getPopularProductsByBrand(
     params.category,
     params.brand
   );
 
-  const t = await getTranslations('Breadcrumbs');
-
   const currentPage = Number(searchParams?.page) || 1;
-
-  const productsOnOnePage = () => {
-    const pageSize = 10;
-    const skip = (currentPage - 1) * pageSize;
-    const prods = products.slice(skip, skip + 10);
-
-    return prods;
-  };
 
   return (
     <main className={styles.main}>
@@ -63,8 +50,13 @@ export default async function ProductsPage({ params, searchParams }: {
         { name: params.brand === 'all' ? t('all') : params.brand, path: '' },
       ]}/>
 
-      <ShowProducts products={productsOnOnePage()}/>
-      <ProductsPagination totalProducts={products.length}/>
+      <Suspense fallback={<ShowProductsSkeleton />}>
+        <ShowProducts
+          categoryParam={params.category}
+          brandParam={params.brand}
+          currentPage={currentPage}
+        />
+      </Suspense>
       {popularProducts && <ShowPopularProducts
         popularProducts={popularProducts}
       />}

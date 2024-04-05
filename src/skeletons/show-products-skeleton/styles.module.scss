@@ -1,0 +1,100 @@
+.skeleton {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+  list-style: none;
+
+  @media screen and (max-width: 1200px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media screen and (max-width: 1000px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media screen and (max-width: 700px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media screen and (max-width: 500px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  &Card {
+    background-color: var(--box-background);
+    border-radius: 6px;
+    box-shadow: var(--box-shadow);
+    padding: 15px 15px 20px;
+    position: relative;
+    overflow: hidden;
+    transition: all .3s;
+
+    @media screen and (max-width: 500px) {
+      display: flex;
+      padding: 15px;
+    }
+
+    &:hover {
+      transform: scale(1.01);
+      box-shadow: var(--box-shadow-hover);
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+  
+      transform: translateX(-100%);
+  
+      animation: shimmer 1.5s infinite;
+  
+      background-image: linear-gradient(to right, transparent, var(--shimmer-color), transparent);
+    }
+  
+    @keyframes shimmer {
+      from {
+        transform: translateX(-100%);
+      }
+      to {
+        transform: translateX(100%);
+      }
+    }
+  }
+
+  &CardInfo {
+    @media screen and (max-width: 500px) {
+      padding-left: 18px;
+      width: 100%;
+    }
+  }
+
+  &CardImage {
+    height: 230px;
+    background-color: var(--hover-color);
+    border-radius: 6px;
+    margin-bottom: 10px;
+
+    @media screen and (max-width: 500px) {
+      min-width: 110px;
+      height: auto;
+      margin-bottom: 0;
+    }
+  }
+
+  &CardTitle {
+    height: 35px;
+    background-color: var(--hover-color);
+    border-radius: 6px;
+    margin-bottom: 20px;
+  }
+
+  &CardMain {
+    height: 40px;
+    background-color: var(--hover-color);
+    border-radius: 6px;
+    margin-bottom: 10px;
+  }
+
+  &CardBuy {
+    height: 40px;
+    background-color: var(--hover-color);
+    border-radius: 6px;
+  }
+}

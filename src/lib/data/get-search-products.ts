@@ -17,6 +17,8 @@ export const getSearchProducts = async (searchData: string) => {
 
     connectToDb();
 
+    await new Promise((resolve) => setTimeout(resolve, 700));
+
     const products = await ProductModel.find().populate({
       path: 'category',
       select: 'name',

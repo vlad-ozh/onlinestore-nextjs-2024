@@ -1,0 +1,1 @@
+export { ShowProductsSkeleton } from './view';

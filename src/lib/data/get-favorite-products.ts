@@ -19,6 +19,8 @@ export const getFavoriteProducts = async () => {
 
     connectToDb();
 
+    await new Promise((resolve) => setTimeout(resolve, 700));
+
     const user = await currentUser();
 
     if (!user) throw ApiError.UnauthorizedError(t('unauth'));

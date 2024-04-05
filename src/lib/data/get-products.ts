@@ -17,6 +17,8 @@ export const getProducts = async (category: string, brand: string) => {
 
     connectToDb();
 
+    await new Promise((resolve) => setTimeout(resolve, 700));
+
     const isCategory = await CategoryModel.findOne({ name: category });
 
     if (!isCategory) throw ApiError.NotFound(t('notFound'));
