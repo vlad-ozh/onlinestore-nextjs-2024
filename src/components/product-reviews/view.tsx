@@ -13,6 +13,7 @@ import styles from './styles.module.scss';
 
 interface IProps {
   isUser: boolean;
+  userId: string | undefined;
   productId: string;
   reviews: IReviewWithId[];
 }
@@ -20,6 +21,7 @@ interface IProps {
 export const ProductReviews: React.FC<IProps> = ({
   productId,
   isUser,
+  userId,
   reviews,
 }) => {
   const t = useTranslations('Product');
@@ -42,12 +44,13 @@ export const ProductReviews: React.FC<IProps> = ({
           </Link>
         </div>
         :
-        <NextIntlClientProvider messages={messages} >
+        <NextIntlClientProvider messages={messages}>
           <ReviewForm productId={productId} />
         </NextIntlClientProvider>
       }
-
-      <ShowReviews reviews={reviews} />
+      <NextIntlClientProvider messages={messages}>
+        <ShowReviews reviews={reviews} userId={userId} productId={productId}/>
+      </NextIntlClientProvider>
     </div>
   );
 };

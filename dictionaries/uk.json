@@ -103,9 +103,11 @@
     "chooseRating": "Виберіть оцінку",
     "create": "Створити",
     "login": "Ввійдіть щоб залишити відгук",
-    "loginLink": "Ввійти",
+    "loginLink": "Увійти",
     "reviews": "Відгуки:",
-    "popularProducts": "Популярні товари"
+    "popularProducts": "Популярні товари",
+    "deleteReview": "Видалити відгук",
+    "deleteReviewConfirm": "Ви впевнені, що хочете видалити свій відгук?"
   },
   "Cart": {
     "order": "Оформити",

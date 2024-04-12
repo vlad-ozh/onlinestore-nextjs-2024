@@ -55,6 +55,7 @@ export default async function ProductPage({ params }: {
       <ProductSpecs specs={product.characteristics}/>
       <ProductReviews
         isUser={Boolean(user)}
+        userId={user?.id}
         productId={product.id}
         reviews={product.reviews}
       />
