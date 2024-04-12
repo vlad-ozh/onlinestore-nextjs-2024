@@ -8,7 +8,7 @@
   }
 
   &Item {
-    border: 1px dashed #e00027;
+    border: 1px dashed var(--accent-color);
     border-radius: 5px;
     padding: 10px;
 
@@ -34,6 +34,32 @@
   &ItemInfoName {
     font-weight: bold;
     margin-bottom: 5px;
+  }
+
+  &ItemInfoDate {
+    display: flex;
+    align-items: center;
+  }
+
+  &ItemDelete {
+    display: flex;
+    background-color: transparent;
+    padding: 8px;
+    cursor: pointer;
+    border: none;
+    transition: all .2s;
+    margin-right: 20px;
+    align-items: center;
+    gap: 10px;
+
+    &:hover {
+      color: var(--accent-color);
+    }
+  }
+  &ItemDeleteText {
+    @media screen and (max-width: 500px) {
+      display: none;
+    }
   }
 
   &ItemText {
